@@ -20,97 +20,121 @@
     #header{
       font-family: 'Fira Sans', sans-serif;
     }
-
-/* Styling */
-.timeline {
-  margin: 4em auto;
-  position: relative;
-  max-width: 46em;
+    .timeline {
+  color: #fff;
 }
-.timeline:before {
-  background-color: black;
+.timeline h1,
+.timeline ul li .content h2 {
+  text-shadow: 1px 1px 1px rgba(56, 56, 56, 0.5);
+}
+.timeline h1 {
+  background: #3d9e67;
+  padding: 70px 0;
+  font-size: 2.5em;
+  text-align: center;
+}
+.timeline ul {
+  padding: 30px 0;
+}
+.timeline ul li {
+  background: #212121;
+  position: relative;
+  margin: 0 auto;
+  width: 5px;
+  padding-bottom: 40px;
+  list-style-type: none;
+}
+.timeline ul li:last-child {
+  padding-bottom: 7px;
+}
+.timeline ul li:before {
   content: '';
-  margin-left: -1px;
+  background: #faf8eb;
   position: absolute;
+  left: 50%;
   top: 0;
-  left: 2em;
-  width: 2px;
-  height: 100%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid #212121;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
-
-.timeline-event {
+.timeline ul li .hidden {
+  opacity: 0;
+}
+.timeline ul li .content {
+  background: #212121;
   position: relative;
+  text-align: center;
+  top: 7px;
+  width: 450px;
+  padding: 20px;
 }
-.timeline-event:hover .timeline-event-icon {
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  background-color: #a83279;
+.timeline ul li .content h2 {
+  color: #fff;
+  padding-bottom: 10px;
+  text-align: center;
 }
-.timeline-event:hover .timeline-event-thumbnail {
-  -moz-box-shadow: inset 40em 0 0 0 #a83279;
-  -webkit-box-shadow: inset 40em 0 0 0 #a83279;
-  box-shadow: inset 40em 0 0 0 #a83279;
+.timeline ul li .content p {
+  text-align: center;
 }
-
-.timeline-event-copy {
-  padding: 2em;
-  position: relative;
-  top: -1.875em;
-  left: 4em;
-  width: 80%;
-}
-.timeline-event-copy h3 {
-  font-size: 1.75em;
-}
-.timeline-event-copy h4 {
-  font-size: 1.2em;
-  margin-bottom: 1.2em;
-}
-.timeline-event-copy strong {
-  font-weight: 700;
-}
-.timeline-event-copy p:not(.timeline-event-thumbnail) {
-  padding-bottom: 1.2em;
-}
-
-.timeline-event-icon {
-  -moz-transition: -moz-transform 0.2s ease-in;
-  -o-transition: -o-transform 0.2s ease-in;
-  -webkit-transition: -webkit-transform 0.2s ease-in;
-  transition: transform 0.2s ease-in;
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  background-color: black;
-  outline: 10px solid white;
-  display: block;
-  margin: 0.5em 0.5em 0.5em -0.5em;
+.timeline ul li .content:before {
+  content: '';
+  background: #212121;
   position: absolute;
-  top: 0;
-  left: 2em;
-  width: 1em;
-  height: 1em;
+  top: 0px;
+  width: 38px;
+  height: 5px;
+}
+.timeline ul li:nth-child(odd) .content {
+  left: 50px;
+  background: #212121;
+}
+.timeline ul li:nth-child(odd) .content:before {
+  left: -38px;
+}
+.timeline ul li:nth-child(even) .content {
+  left: calc(-450px - 45px);
+  background: #212121;
+}
+.timeline ul li:nth-child(even) .content:before {
+  right: -38px;
 }
 
-.timeline-event-thumbnail {
-  -moz-transition: box-shadow 0.5s ease-in 0.1s;
-  -o-transition: box-shadow 0.5s ease-in 0.1s;
-  -webkit-transition: box-shadow 0.5s ease-in;
-  -webkit-transition-delay: 0.1s;
-  transition: box-shadow 0.5s ease-in 0.1s;
-  color: white;
-  font-size: 0.75em;
-  background-color: black;
-  -moz-box-shadow: inset 0 0 0 0em #ef795a;
-  -webkit-box-shadow: inset 0 0 0 0em #ef795a;
-  box-shadow: inset 0 0 0 0em #ef795a;
-  display: inline-block;
-  margin-bottom: 1.2em;
-  padding: 0.25em 1em 0.2em 1em;
+/* -------------------------
+   ----- Media Queries -----
+   ------------------------- */
+@media screen and (max-width: 1020px) {
+  .timeline ul li .content {
+    width: 41vw;
+  }
+
+  .timeline ul li:nth-child(even) .content {
+    left: calc(-41vw - 45px);
+  }
 }
+@media screen and (max-width: 700px) {
+  .timeline ul li {
+    margin-left: 20px;
+  }
+  .timeline ul li .content {
+    width: calc(100vw - 100px);
+  }
+  .timeline ul li .content h2 {
+    text-align: initial;
+  }
+  .timeline ul li:nth-child(even) .content {
+    left: 45px;
+    background: #212121;
+  }
+  .timeline ul li:nth-child(even) .content:before {
+    left: -33px;
+  }
+}
+
 
   </style>
 </head>
@@ -224,9 +248,9 @@
                  be set up.
               </p>
         </div>
-        <div class="col s12 m6">
+        <div class="col s12 m6 center">
           <br><br>
-          <img class="responsive-img" src="images/modulus/modulus.jpg">
+          <img class="responsive-img" src="images/modulus/modulus.jpg" style="margin-left:10%;">
         </div>
         <div class="row center">
           <a href="#team" class="btn-floating btn-large waves-effect waves-light teal accent-4"><i class="material-icons">arrow_downward</i></a>
@@ -249,49 +273,42 @@
         </div>
         <div class="row center">
           <div class="col s12 m4">
-            <div class="card">
+            <div class="card hoverable">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/Team/Ayushman.jpg">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Ayushman</span>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Ayushman<i class="material-icons right">close</i></span>
-                <p class="grey-text text-darken-4">
+                <p class="grey-text text-darken-2">
                   <b>Team Head</b> and<br> <b>Product Development Lead</b>
                 </p>
               </div>
             </div>
           </div>
           <div class="col s12 m4">
-            <div class="card">
+            <div class="card hoverable">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/Team/AK.png">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Aditya Kamath</span>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Aditya Kamath<i class="material-icons right">close</i></span>
-                <p class="grey-text text-darken-4" style="text-align:center;">
+                <p class="grey-text text-darken-2">
                   <b>Marketing</b> and <br><b>Business Development<b>
                 </p>
               </div>
             </div>
           </div>
           <div class="col s12 m4">
-            <div class="card">
+            <div class="card hoverable">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/Team/AV.png">
               </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Adhitya Vasudevan</span>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Adhitya Vasudevan<i class="material-icons right">close</i></span>
-                <p class="grey-text text-darken-4">
-                  Electronics Lead
+                <span class="card-title activator grey-text text-darken-4">Adithya Vasudevan</span>
+                <p class="grey-text text-darken-2">
+                  Electronics Lead<br>
+                  &nbsp;<br>
+
                 </p>
               </div>
             </div>
@@ -302,30 +319,24 @@
 
           </div>
           <div class="col s12 m4">
-            <div class="card">
+            <div class="card hoverable">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/Team/arjun.png">
               </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Arjun</span>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Arjun Menon<i class="material-icons right">close</i></span>
-                <p class="grey-text text-darken-4">Marketing Lead</p>
+                <span class="card-title activator grey-text text-darken-4">Arjun Menon</span>
+                <p class="grey-text text-darken-2">Marketing Lead</p>
               </div>
             </div>
           </div>
           <div class="col s12 m4">
-            <div class="card">
+            <div class="card hoverable">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="images/Team/SS.png">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Siddharth Sahay</span>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Siddharth Sahay<i class="material-icons right">close</i></span>
-                <p class="grey-text text-darken-4">Programming Lead</p>
+                <p class="grey-text text-darken-2">Programming Lead</p>
               </div>
             </div>
           </div>
@@ -344,69 +355,68 @@
   <div class="container">
     <div class="section">
       <div class="row">
-        <div class="col s12 center">
-          <h4 class="grey-text text-darken-4">Strange Matter <b>Timeline</b></h4>
-          <div class="divider">
-
-          </div>
-          <a id="history" name="history"></a>
-          <ul class="timeline">
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">October 2015</p>
-                <h3>Initial Ideation Stage</h3>
-                <h4>Some more text</h4>
+        <section class="timeline">
+          <ul>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>October 2015</time>
+                </h3>
+                <p>Initial Ideation Stage</p>
               </div>
             </li>
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">Nov 2015 - May 2016</p>
-                <h3>Prototype 1 (Modulus)</h3>
-                <h4>Research and Development</h4>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>November 2015 - May 2016</time>
+                </h3>
+                <p><b>Prototype 1 (Modulus)<b> - Research and Development</p>
               </div>
             </li>
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">May 2016</p>
-                <h3>Modulus wins Provenance</h3>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>May 2016</time>
+                </h3>
+                <p>Modulus wins Provenance</p>
               </div>
             </li>
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">June 2016 - May 2017</p>
-                <h3>Modulus Prototype 2</h3>
-                <h4>Development</h4>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>June 2016 - May 2017</time>
+                </h3>
+                <p><b>Modulus Prototype 2</b> - Development</p>
               </div>
             </li>
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">May 2017</p>
-                <h3>"Modulus"</h3>
-                <h4>Among top 30 projects in India</h4>
-                <p>In Texas Instruments India Innovation Challenge</p>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>May 2017</time>
+                </h3>
+                <p><b>"Modulus"</b><br>
+                  Among top 30 projects in India <br>
+                  In Texas Instruments India Innovation Challenge</p>
               </div>
             </li>
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">June 2017 - August 2017</p>
-                <h3>Design and Ideation of Modulus 1</h3>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>June 2017 - August 2017</time>
+                </h3>
+                <p>Design and Ideation of Modulus 1</p>
               </div>
             </li>
-            <li class="timeline-event">
-              <label class="timeline-event-icon"></label>
-              <div class="timeline-event-copy">
-                <p class="timeline-event-thumbnail">August 2017</p>
-                <h3>Prototype Development of Modulus 1</h3>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>August 2017</time>
+                </h3>
+                <p>Prototype Development of Modulus 1</p>
               </div>
             </li>
           </ul>
-        </div>
+        </section>
       </div>
     </div>
   </div>
@@ -459,6 +469,33 @@
       }, 500);
 
       return false;
+    });
+  </script>
+  <script type="text/javascript">
+        /* Check the location of each element */
+      $('.content').each( function(i){
+
+      var bottom_of_object= $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).height();
+
+      if( bottom_of_object > bottom_of_window){
+        $(this).addClass('hidden');
+      }
+      });
+
+
+      $(window).scroll( function(){
+        /* Check the location of each element hidden */
+        $('.hidden').each( function(i){
+
+            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            /* If the object is completely visible in the window, fadeIn it */
+            if( bottom_of_window > bottom_of_object ){
+              $(this).animate({'opacity':'1'},700);
+            }
+        });
     });
   </script>
 
