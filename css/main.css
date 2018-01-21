@@ -1,5 +1,4 @@
 body{
-  background-color: #2196F3;
   color: #fafafa;
   height: 100%;
   font-family: 'tradegothiclt-bold', sans-serif;
@@ -20,4 +19,13 @@ span {
   50% {
     border-color: transparent;
   }
+}
+
+.left{
+  background-color: #2196F3;
+  width: 50%;
+}
+
+.right{
+  background-color:
 }
