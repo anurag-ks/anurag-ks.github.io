@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Strange Matter</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="css/style1.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400" rel="stylesheet">
+  <script src="https://use.fontawesome.com/8431f6c086.js"></script>
+
+  <style media="screen">
+    html{
+      font-family: 'Raleway', sans-serif;
+    }
+    #header{
+      font-family: 'Fira Sans', sans-serif;
+    }
+    .timeline {
+  color: #fff;
+}
+.timeline h1,
+.timeline ul li .content h2 {
+  text-shadow: 1px 1px 1px rgba(56, 56, 56, 0.5);
+}
+.timeline h1 {
+  background: #3d9e67;
+  padding: 70px 0;
+  font-size: 2.5em;
+  text-align: center;
+}
+.timeline ul {
+  padding: 30px 0;
+}
+.timeline ul li {
+  background: #212121;
+  position: relative;
+  margin: 0 auto;
+  width: 5px;
+  padding-bottom: 40px;
+  list-style-type: none;
+}
+.timeline ul li:last-child {
+  padding-bottom: 7px;
+}
+.timeline ul li:before {
+  content: '';
+  background: #faf8eb;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid #212121;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.timeline ul li .hidden {
+  opacity: 0;
+}
+.timeline ul li .content {
+  background: #212121;
+  position: relative;
+  text-align: center;
+  top: 7px;
+  width: 450px;
+  padding: 20px;
+}
+.timeline ul li .content h2 {
+  color: #fff;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.timeline ul li .content p {
+  text-align: center;
+}
+.timeline ul li .content:before {
+  content: '';
+  background: #212121;
+  position: absolute;
+  top: 0px;
+  width: 38px;
+  height: 5px;
+}
+.timeline ul li:nth-child(odd) .content {
+  left: 50px;
+  background: #212121;
+}
+.timeline ul li:nth-child(odd) .content:before {
+  left: -38px;
+}
+.timeline ul li:nth-child(even) .content {
+  left: calc(-450px - 45px);
+  background: #212121;
+}
+.timeline ul li:nth-child(even) .content:before {
+  right: -38px;
+}
+
+/* -------------------------
+   ----- Media Queries -----
+   ------------------------- */
+@media screen and (max-width: 1020px) {
+  .timeline ul li .content {
+    width: 41vw;
+  }
+
+  .timeline ul li:nth-child(even) .content {
+    left: calc(-41vw - 45px);
+  }
+}
+@media screen and (max-width: 700px) {
+  .timeline ul li {
+    margin-left: 20px;
+  }
+  .timeline ul li .content {
+    width: calc(100vw - 100px);
+  }
+  .timeline ul li .content h2 {
+    text-align: initial;
+  }
+  .timeline ul li:nth-child(even) .content {
+    left: 45px;
+    background: #212121;
+  }
+  .timeline ul li:nth-child(even) .content:before {
+    left: -33px;
+  }
+}
+  </style>
+</head>
+<body>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="grey-text text-darken-4 center light" id="header">
+          <img class="responsive-img" src="images/logo_new.png" alt="" width="150px" height="150px"><br>
+          Strange Matter
+        </h1>
+        <br><br>
+        <div class="row">
+
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="center row">
+          <div class="col s12 m5" style="border-left: thin solid #11DFC7;border-right: thin solid #11DFC7;">
+            <h3 class="header center grey-text text-darken-4 light"><b>M</b>odulus <b>I</b></h2>
+            <h5 class="center grey-text text-darken-4 light">Semi-Industrial Modular CNC machine</h5>
+            <p class="center grey-text text-darken-4 light">Implementing modularity in the design of
+              a modern day gantry based industrial CNC machine.</p>
+              <a href="modulus_1.html" class="waves-effect btn "><b>L</b>earn More</a>
+          </div>
+          <div class="col s12 m2">
+          </div>
+          <div class="col s12 m5" style="border-left: thin solid #11DFC7;border-right: thin solid #11DFC7;">
+            <h3 class="header center grey-text text-darken-4 light"><b>M</b>odulus</h2>
+            <h5 class="center grey-text text-darken-4 light"> A desktop CNC</h5>
+            <p class="center grey-text text-darken-4 light">The compact, affordable CNC that provides
+              maximum functionality, great power and impeccable precision for its grade.</p>
+              <a href="modulus.html" class="waves-effect btn "><b>L</b>earn More</a>
+          </div>
+          </div>
+        <div class="row center">
+          <a href="#about" class="btn-floating btn-large waves-effect waves-light teal accent-4"><i class="material-icons">arrow_downward</i></a>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="parallax">
+      <ul class="cb-slideshow">
+        <li><span>Image 01</span><div></div></li>
+        <li><span>Image 02</span><div></div></li>
+        <li><span>Image 03</span><div></div></li>
+        <li><span>Image 04</span><div></div></li>
+        <li><span>Image 05</span><div></div></li>
+        <li><span>Image 06</span><div></div></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 m6">
+          <a id="about" name="about"></a>
+          <br><br>
+          <br><br>
+          <br><br>
+          <br><br>
+          <img src="images/about.jpg" class="responsive-img">
+        </div>
+        <div class="col s12 m6">
+          <h2 class="header center grey-text text-darken-4 light">About Us</h2>
+          <div class="divider"></div>
+          <p style="text-align:justify">
+            We are a small group of engineering students who aim to set forth
+            into the product design industry with a novel manufacturing and
+             rapid prototyping product. Based out of Manipal, the team was
+             formed to participate in a State level B-plan competition conducted
+             by MUTBI, an incubator supported by the National Science &
+             Technology Entrepreneurship Development Board (NSTEDB).
+             Strange Matter aims to build technology that will be
+             accessible to a wide array of designers, engineers, academicians,
+             hardware manufacturers and PCB manufacturing units to name a few.
+             Strange Matter was the winner of Provenance 2015 under the name
+              Team Modulus. We hope to play a significant role in the gradual
+               advent of the maker movement and the rapid prototyping and
+               precision machining era in India.<br>
+          </p>
+        </div>
+        <div class="row center">
+          <a href="#goal" class="btn-floating btn-large waves-effect waves-light teal accent-4"><i class="material-icons">arrow_downward</i></a>
+        </div>
+      </div>
+
+      <div class="row">
+        <a id="goal" name="goal"></a>
+        <div class="col s12 m6">
+          <h2 class="header center grey-text text-darken-4 light">Goal</h2>
+          <div class="divider"></div>
+          <p style="text-align:justify">
+            Manifest our idea of developing a CNC Mill; accessible and easy to
+            use, which will help the field of CNC machining venture into a vast
+             number of domains that it hasn’t yet taken off into. We endeavor to
+              cast aside barriers and conventions that have prohibited the entry
+               of the product into otherwise untapped high potential fields.
+          </p>
+          <p style="text-align:justify">
+            The integration of an extensive Software Application which will
+            provide great mobility, incorporate ease of use and support various
+             input files for machining is on our agenda. All this, tightly
+              coupled with the elimination of G-Codes, promises to deliver a
+               product different from the rest of its counterparts. Once the
+                product is out on the line, an extensive support platform will
+                 be set up.
+              </p>
+        </div>
+        <div class="col s12 m6 center">
+          <br><br>
+          <img class="responsive-img" src="images/Modulus/modulus.jpg" style="margin-left:10%;">
+        </div>
+        <div class="row center">
+          <a href="#team" class="btn-floating btn-large waves-effect waves-light teal accent-4"><i class="material-icons">arrow_downward</i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container center">
+        <div class="row center">
+          <a id="team" name="team"></a>
+          <h2 class="header col s12 light">Our Team</h2>
+        </div>
+        <div class="divider">
+
+        </div>
+        <div class="row center">
+          <div class="col s12 m4">
+            <div class="card hoverable">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/Team/img/ayushman.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Ayushman</span>
+                <p class="grey-text text-darken-2">
+                  <b>Team Head</b> and<br> <b>Product Development Lead</b><br>
+                  <a href="https://www.linkedin.com/in/ayushmanchoudhuri"><i class="blue-text text-darken-2 fa fa-linkedin-square" style="font-size:1.5em" aria-hidden="true"></i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card hoverable">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/Team/img/ak.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Aditya Kamath</span>
+                <p class="grey-text text-darken-2">
+                  <b>Marketing</b> and <br><b>Business Development<b><br>
+                    <a href="https://www.linkedin.com/in/aditya-kamath-8659bb137">
+                      <i class="blue-text text-darken-2 fa fa-linkedin-square" style="font-size:1.5em" aria-hidden="true"></i>
+                    </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card hoverable">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/Team/img/av.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Adithya Vasudevan</span>
+                <p class="grey-text text-darken-2">
+                  <b>Electronics</b> Lead<br>
+                  &nbsp;<br>
+                  <a href="https://www.linkedin.com/in/adithyavasudevan"><i class="blue-text text-darken-2 fa fa-linkedin-square" style="font-size:1.5em" aria-hidden="true"></i></a>
+                  <br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="col s12 m2">
+
+          </div>
+          <div class="col s12 m4">
+            <div class="card hoverable">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/Team/img/arjun.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Arjun Menon</span>
+                <p class="grey-text text-darken-2"><b>Business</b> Lead <br>
+                  <a href="#"><i class="blue-text text-darken-2 fa fa-linkedin-square" style="font-size:1.5em" aria-hidden="true"></i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card hoverable">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/Team/img/ss.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Siddharth Sahay</span>
+                <p class="grey-text text-darken-2"><b>Programming</b> Lead <br>
+                  <a href="https://www.linkedin.com/in/sidsahay">
+                    <i class="blue-text text-darken-2 fa fa-linkedin-square" style="font-size:1.5em" aria-hidden="true">
+                    </i>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m2">
+
+          </div>
+        </div>
+      </div>
+      <div class="row center">
+        <a href="#history" class="btn-floating btn-large waves-effect waves-light teal accent-4"><i class="material-icons">arrow_downward</i></a>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/slider_images/team.png"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <h2 class="center header">Strange Matter Timeline</h2>
+        <div class="divider ">
+        </div>
+        <a id="history" name="history"></a>
+        <section class="timeline">
+          <ul>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>October 2015</time>
+                </h3>
+                <p>Initial Ideation Stage</p>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>November 2015 - May 2016</time>
+                </h3>
+                <p><b>Prototype 1 (Modulus)<b> - Research and Development</p>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>May 2016</time>
+                </h3>
+                <p>Modulus wins Provenance</p>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>June 2016 - May 2017</time>
+                </h3>
+                <p><b>Modulus Prototype 2</b> - Development</p>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>May 2017</time>
+                </h3>
+                <p><b>"Modulus"</b><br>
+                  Among top 30 projects in India <br>
+                  In Texas Instruments India Innovation Challenge</p>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>June 2017 - August 2017</time>
+                </h3>
+                <p>Design and Ideation of Modulus 1</p>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <h3>
+                  <time>August 2017</time>
+                </h3>
+                <p>Prototype Development of Modulus 1</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Address</h5>
+          <p class="grey-text text-lighten-4">
+            Innovation Centre,<br>
+            Manipal Institute of Technology,<br>
+            Manipal, Karnataka-576104
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Email</h5>
+          <ul>
+            <li><a class="white-text" href="mailto:ayushman@strangematter.in">ayushman@strangematter.in</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contact</h5>
+          <p>
+            Arjun : +91 7022207454 <br>
+            Ayushman : +91 9482343658
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Copyright | <a class="brown-text text-lighten-3">Strangematter 2017</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script type="text/javascript">
+  var $root = $('html, body');
+    $('a[href^="#"]').click(function () {
+      $root.animate({
+          scrollTop: $( $.attr(this, 'href') ).offset().top
+      }, 500);
+
+      return false;
+    });
+  </script>
+  <script type="text/javascript">
+        /* Check the location of each element */
+      $('.content').each( function(i){
+
+      var bottom_of_object= $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).height();
+
+      if( bottom_of_object > bottom_of_window){
+        $(this).addClass('hidden');
+      }
+      });
+
+
+      $(window).scroll( function(){
+        /* Check the location of each element hidden */
+        $('.hidden').each( function(i){
+
+            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            /* If the object is completely visible in the window, fadeIn it */
+            if( bottom_of_window > bottom_of_object ){
+              $(this).animate({'opacity':'1'},700);
+            }
+        });
+    });
+  </script>
+
+  </body>
+</html>
