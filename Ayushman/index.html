@@ -61,12 +61,13 @@
                 </div>
               </div>
 			  <!-- HEADER HEADLINE -->
+              &nbsp;
               <div class="row">
                 <div class="col-md-8 col-md-offset-1 inner">
                   <h1 class="animated fadeInDown">
                     Ayush<span style="color:#E04343;">man</span><br/>
                   </h1><!-- Title -->
-                  <h3 class="animated fadeInUp delay-05s"><span class="rotate">Engineer,Maker,Geek</span></h3><!-- Text Rotator -->
+                  <h3 class="animated fadeInUp delay-05s"><span class="rotate">Engineer,Maker,Dreamer</span></h3><!-- Text Rotator -->
                 </div>
               </div>
 			  <!-- Learn More Button -->
@@ -127,7 +128,7 @@
 		    <!-- Headline -->
             <div class="row">
               <h1 class="arrow">
-                Recent <span>Porojects</span>
+                Recent <span>Projects</span>
               </h1>
             </div>
           </div>
@@ -221,6 +222,57 @@
         PORTFOLIO SECTION END
         =========================== -->
 
+    <!-- ==========================
+        WORK WITH SECTION
+        =========================== -->
+    <section class="text-center section-padding" id="blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="arrow">Worked <span>With</span></h1>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+
+                <h2><span>Strange Matter</span></h2>
+                <p>Team Head and Founder</p>
+            </div>
+            <div class="col-md-4">
+
+                <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                        <img class="grayscale" src="img/logos/iisc.png">
+                    </div>
+                </div>
+                <h2><span>Indian Institute of Sciences</span></h2>
+                <p>Summer Project Intern</p>
+            </div>
+            <div class="col-md-4">
+
+                <h2><span>RoboManipal</span></h2>
+                <p>Mechanical Engineer</p>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+
+                <h2><span>Mangalore Refinery and Petrochemicals Ltd</span></h2>
+                <p>Summer and Winter Trainee</p>
+            </div>
+            <div class="col-md-4">
+              <div class="overlay-effect effects clearfix">
+                  <div class="img">
+                      <img class="grayscale" src="img/logos/iitg.png">
+                  </div>
+              </div>
+              <h2><span>Indian Institute of Technology, Guwahati</span></h2>
+              <p>Summer Project Intern</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ==========================
         BLOG SECTION
@@ -332,35 +384,24 @@
               </div>
             </div>
             <div class="row contact-details">
-			  <!-- Adress Box -->
-              <div class="col-md-4">
-                <div class="dark-box box-hover">
-                  <h2><i class="fa fa-map-marker"></i><span>Address</span></h2>
-                  <p>23 Ipsum street, New York</p>
-                </div>
-              </div>
 			  <!-- Phone Number Box -->
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="dark-box box-hover">
                   <h2><i class="fa fa-mobile"></i><span>Phone</span></h2>
-                  <p>+12 345 6789</p>
+                  <p>+91 94823 43658</p>
                 </div>
               </div>
 			  <!-- E-Mail Box -->
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="dark-box box-hover">
                   <h2><i class="fa fa-paper-plane"></i><span>Email</span></h2>
-                  <p><a href="index.html#">info@themewagon.com</a></p>
+                  <p><a href="index.html#">ayushc205@gmail.com</a></p>
                 </div>
               </div>
             </div>
 			<div class="row">
-			  <!-- Google Maps (Change your Settings below) -->
-			  <div class="col-md-6">
-			    <div id="googlemaps"></div>
-			  </div>
 			  <!-- Contact Form -->
-			  <div class="col-md-6 contact">
+			  <div class="col-md-12 contact">
 			     <form role="form">
 				            <!-- Name -->
                             <div class="row">
@@ -443,43 +484,9 @@
 	<script src="assets/textrotator/jquery.simple-text-rotator.js"></script>
 	<!-- Lightbox.js -->
     <script src="assets/lightbox/js/lightbox.min.js"></script>
-    <!-- Google Maps -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeKBBPJTG3v5w3cNPAgM6ZsJiPyL1mP_o&amp;sensor=false"></script>
 	<!-- Theme JavaScript Core -->
 	<script src="js/main.js"></script>
 	<script src="js/script.js"></script>
-
-	<!-- GOOGLE MAPS DATA -->
-    <script type="text/javascript">
-    // When the window has finished loading create our google map below
-        google.maps.event.addDomListener(window, 'load', init);
-
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 15,
-
-                scrollwheel: false,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(40.68961985411178, -74.01618003845215), // New York
-
-                // How you would like to style the map.
-                // This is where you would paste any style found on Snazzy Maps.
-                styles: [	{		featureType:'water',		stylers:[{color:'#F2F2F2'},{visibility:'on'}]	},{		featureType:'landscape',		stylers:[{color:'#FFFFFF'}]	},{		featureType:'road',		stylers:[{saturation:-100},{lightness:45}]	},{		featureType:'road.highway',		stylers:[{visibility:'simplified'}]	},{		featureType:'road.arterial',		elementType:'labels.icon',		stylers:[{visibility:'off'}]	},{		featureType:'administrative',		elementType:'labels.text.fill',		stylers:[{color:'#ADADAD'}]	},{		featureType:'transit',		stylers:[{visibility:'off'}]	},{		featureType:'poi',		stylers:[{visibility:'off'}]	}]
-            };
-
-            // Get the HTML DOM element that will contain your map
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('googlemaps');
-
-            // Create the Google Map using out element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-        }
-
-    </script>
 
 	<!-- TEXT ROTATOR SETTINGS -->
     <script type="text/javascript">
