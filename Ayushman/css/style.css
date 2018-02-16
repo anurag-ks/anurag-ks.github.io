@@ -114,7 +114,7 @@ a:active,a:hover {
 /* ==========================================================================Typography========================================================================== */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400);
 h1 {
-	font-size:2em;
+	font-size:1.5em;
 	margin:0.67em 0;
 	color:#353535;
 }
@@ -453,11 +453,12 @@ table {
 }
 /* ==========================================================================Hero========================================================================== */
 .hero {
-	background: url('../img/header-bg.jpg') right bottom no-repeat;
+	background: url('../img/header-bg.png') right bottom no-repeat;
 	background-size: cover;
 	padding:110px 0 100px 0;
 	height:auto;
 	background-color: #FBFBFB;
+  background-position: 0.5px
 }
 .hero h1 {
 	font-size: 120px;
