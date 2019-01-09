@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assests/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="ui inverted vertical masthead center aligned segment">
+      <div class="ui container">
+        <div class="ui large secondary inverted pointing menu">
+          <a class="active item" href="/about/">About</a>
+          <a class="active item" href="/work/">Work</a>
+          <a class="active item" href="/blog/">Blog</a>
+        </div>
+      </div>
+
+      <div class="ui text container">
+        <h1 class="ui inverted header">
+          Anurag Sharma
+        </h1>
+        <h2>Designer & Developer</h2>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+  $(document).ready(function(){
+      // to fade in on page load
+      $("body").css("display", "none");
+      $("body").fadeIn(400);
+      // to fade out before redirect
+      $('a').click(function(e){
+          redirect = $(this).attr('href');
+          e.preventDefault();
+          $('body').fadeOut(400, function(){
+              document.location.href = redirect
+          });
+      });
+    })
+  </script>
+</html>

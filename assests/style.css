@@ -1,0 +1,45 @@
+.masthead{
+  min-height: 100vh;
+  height: 100vh auto;
+}
+.masthead .segment{
+  min-height: 700px;
+  padding: 1em 0em;
+}
+
+.masthead h1.ui.header {
+  margin-top: 3em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-weight: normal;
+  font-family: 'Major Mono Display', monospace;
+  text-align: center;
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 10s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+.masthead h2 {
+  font-size: 1.2em;
+  font-weight: lighter;
+  font-family: 'Major Mono Display', monospace;
+}
+
+.item {
+  transition: 3ms;
+}
+
+.item:hover{
+  opacity: 0.5;
+}
