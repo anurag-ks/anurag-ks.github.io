@@ -5,6 +5,11 @@ html{
   display: none;
 }
 
+.masthead{
+  background-image: url('../img/background_mirage.jpg') !important;
+  background-size: cover !important;
+}
+
 .masthead.segment {
   min-height: 600px;
   padding: 1em 0em;
