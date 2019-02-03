@@ -15,38 +15,60 @@ html{
   transition: 0.2s;
 }
 
-
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
+.logo{
+  display: block;
+  margin: auto;
 }
 
-/* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container {
-  padding-right: 0;
-  padding-left: 0;
+.banner{
+  height: 550px;
+  background-image: url("../img/background_mirage.jpg");
+  background-size: cover;
+  margin-bottom: 60px;
+  min-width: 100%;
 }
-.navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
+
+.upcomming_projects{
+  margin-bottom: 60px;
 }
-.navbar-wrapper .navbar .container {
+
+.slide{
+  display: block;
   width: auto;
+  height: 25vh;
 }
 
+.slide:hover{
+  transform: scale(1.2);
+}
+
+
+.middle:hover {
+  opacity: 1;
+}
+
+.project_slide{
+  width: 200px;
+  height: 200px;
+}
+
+.project_slide:hover{
+  transform: scale(1.0);
+}
+
+.glide__bullet{
+  background-color: #AAAAAA;
+}
+.glide__bullet:hover{
+  background-color: #BBBBBB;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
+  position: relative;
   height: 550px;
   margin-bottom: 60px;
 }
