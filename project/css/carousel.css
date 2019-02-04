@@ -11,7 +11,7 @@ html{
 }
 
 *{
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Abel', sans-serif;
   transition: 0.2s;
 }
 
@@ -32,12 +32,12 @@ html{
   margin-bottom: 60px;
 }
 
-.slide{
+.trending_slide{
   width: 200px;
   height: 200px;
 }
 
-.slide:hover{
+.trending_slide:hover{
   transform: scale(1.2);
 }
 
@@ -66,33 +66,19 @@ html{
   font-weight: bold;
 }
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-  position: relative;
-  height: 550px;
-  margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
+.carousel-inner {
+   width:100%;
+   height: 500px !important;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 550px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
+.carousel-inner > .carousel-item > img{
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
-  min-height: 550px;
+  height: 400px;
+  max-width: none;
 }
-
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
