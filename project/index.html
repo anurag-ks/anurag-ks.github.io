@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Anurag Sharma">
+    <link rel="icon" href="favicon.ico">
+
+    <title>MirageGroup</title>
+    <link href="static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <link rel="stylesheet" href="css/glide.core.min.css">
+    <link rel="stylesheet" href="css/glide.theme.min.css">
+
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Some Personal Information</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Full Name:</label>
+                <input type="text" class="form-control" id="full_name">
+              </div>
+              <div class="form-group">
+                <label for="phone_number" class="control-label">Phone Number:</label>
+                <input type="text" class="form-control" id="phone_number">
+              </div>
+              <div class="form-group">
+                <label for="location-text" class="control-label">Location:</label>
+                <textarea class="form-control" id="location"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submit">Send message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <nav class="navbar navbar-light navbar-expand-md">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/miragegroup.co.in/" style="font-size:1.5em;"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://twitter.com/MirageGroup3" style="font-size:1.5em;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://in.linkedin.com/company/miragegroup/?viewAsMember=true" style="font-size:1.5em;"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+        </ul>
+        <span class="navbar-text">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="tel:+918999789773" style="font-size:1.5em;"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="mailto:connect@miragegroup.co.in" style="font-size:1.5em;"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+          </ul>
+        </span>
+      </div>
+      </nav>
+      </header>
+
+    <div class="container banner">
+      <img src="img/logo.svg" class="img-fluid logo">
+    </div>
+
+    <div class="container upcomming_projects text-center">
+      <h2><b>Trending Projects</b></h2>
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">.
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/aldea__2.jpg" alt="First slide">
+              <span class="text-center">Aldea</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/eon.jpeg" alt="Second slide">
+              <span class="text-center">EON</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/fusion-towers-.jpeg" alt="Third slide">
+              <span class="text-center">Fusion Towers</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/gangaacropolis.jpg" alt="Fourth slide">
+              <span class="text-center">Ganga Acropolis</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/gangalegend.jpg" alt="Fifth slide">
+              <span class="text-center">Ganga Legend</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/godrejelements.jpg" alt="First slide">
+              <span class="text-center">Godrej Elements</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/itrend.jpg" alt="Second slide">
+              <span class="text-center">I Trend</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/joyville2.png" alt="Third slide">
+              <span class="text-center">Joyville 2</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/kalpataru-jade-.jpeg" alt="Fourth slide">
+              <span class="text-center">Kalpataru</span>
+            </li>
+            <li class="glide__slide">
+              <img class="img-fluid trending_slide" src="img/trending/trident.jpg" alt="Fifth slide">
+              <span class="text-center">Trident</span>
+            </li>
+          </ul>
+        </div>
+        <br><br>
+        <div class="glide__bullets" data-glide-el="controls[nav]">
+          <button class="glide__bullet" data-glide-dir="=0"></button>
+          <button class="glide__bullet" data-glide-dir="=1"></button>
+          <button class="glide__bullet" data-glide-dir="=2"></button>
+          <button class="glide__bullet" data-glide-dir="=3"></button>
+          <button class="glide__bullet" data-glide-dir="=4"></button>
+          <button class="glide__bullet" data-glide-dir="=5"></button>
+          <button class="glide__bullet" data-glide-dir="=6"></button>
+          <button class="glide__bullet" data-glide-dir="=7"></button>
+          <button class="glide__bullet" data-glide-dir="=8"></button>
+          <button class="glide__bullet" data-glide-dir="=9"></button>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="container projects">
+      <div class="row">
+        <div class="container text-center"><h1>Our Projects</h1></div>
+      </div>
+      <br>
+      <div class="row text-center">
+        <div class="col-lg-6" style="border-right: 1px solid #e2e2e2;">
+          <div class="container upcomming_projects text-center">
+            <h2><b>Commerical</b></h2>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+                <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" style="">
+                <div class="carousel-item active">
+                  <a href="commercial_projects.html"><img src="img/commerical_images/1.jpg" class="d-block w-100" alt="..."></a>
+                </div>
+                <div class="carousel-item">
+                  <a href="commercial_projects.html"><img src="img/commerical_images/2.jpg" class="d-block w-100" alt="..."></a>
+                </div>
+                <div class="carousel-item">
+                  <a href="commercial_projects.html"><img src="img/commerical_images/3.jpg" class="d-block w-100" alt="..."></a>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container upcomming_projects text-center">
+            <h2><b>Residential</b></h2>
+            <div id="carouselExampleControlsCommerical" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleControlsCommerical" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleControlsCommerical" data-slide-to="1"></li>
+                <li data-target="#carouselExampleControlsCommerical" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" style="">
+                <div class="carousel-item active">
+                  <a href="residential_projects.html"><img src="img/residential_images/2.jpg" class="d-block w-100" alt="..."></a>
+                </div>
+                <div class="carousel-item">
+                  <a href="residential_projects.html"><img src="img/residential_images/3.jpg" class="d-block w-100" alt="..."></a>
+                </div>
+                <div class="carousel-item">
+                  <a href="residential_projects.html"><img src="img/residential_images/5.jpg" class="d-block w-100" alt="..."></a>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControlsCommerical" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControlsCommerical" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="container marketing">
+      <div class="row text-center">
+        <div class="container">
+          <h1><b>Our Services</b></h1>
+        </div>
+      </div>
+      <br><br>
+      <div class="row text-center">
+        <div class="col-lg-3">
+          <img class="img-circle" src="img/services/real-estate.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Real Estate Consulting</h2>
+          <p>Mirage Group is a name synonymous with providing you end to end solution to all your property investments.</p>
+        </div>
+        <div class="col-lg-3">
+          <img class="img-circle" src="img/services/nri.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>NRI Services</h2>
+          <p>Mirage group are one stop solution to all your property needs. We are not just another property dealing agency.</p>
+        </div>
+        <div class="col-lg-3">
+          <img class="img-circle" src="img/services/home.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Home Loan & Legal Consultation</h2>
+          <p>Mirage Group assists you in getting your dream home through loan services.</p>
+        </div>
+        <div class="col-lg-3">
+          <img class="img-circle" src="img/services/assist.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>After Sales Assistance</h2>
+          <p>Mirage Group does not stop with just providing assistance in buying the property that you need.</p>
+        </div>
+      </div>
+      <hr>
+      <br>
+
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <h1 class="display-4">Why choose MirageGroup?</h1><br>
+            <img src="img/why.png" class="img-fluid img-thumbnail" alt="">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="container team">
+        <div class="row text-center">
+          <div class="container">
+            <h1><b>Team Mirage</b></h1>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-3" style="max-width: 100%;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="img/user.png" class="img-fluid member-image" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Ashish Bharti</h5>
+                    <p class="card-text"><small class="text-muted">Founder, Director</small></p>
+                    <p class="card-text">He holds a Bachelor’s Degree in Technology (Electrical and Electronic Engineering) from Pimpri Chinchwad College Of Engineering, Pune. Prior to initiating Mirage Group, he was serving as a Marketing Executive in one of the esteemed Real Estate Marketing Firm in Pune.
+                      He is a visionary man,  who has spent his past 4 years evangelizing the market and struggled hard to establish this business. A calculated risk taker with deep industry knowledge, his struggle is a real inspiration. Right from the beginning his passion for providing best services and sorting out all the real estate problems drove him the impetus to turn hard work and inspiration into to a booming real estate business.
+                      We now serve customers all over Maharashtra and are thrilled to be a part of this domain.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="card mb-3" style="max-width: 100%;">
+              <div class="row no-gutters">
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Nitish Das</h5>
+                    <p class="card-text"><small class="text-muted">Co-Founder, Director</small></p>
+                    <p class="card-text">He is obsessively passionate about his work and his mission is to help people achieve the motive because of which they approach him. He believes in action and less in words. We hope you enjoy our services as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us. We are always at your service with our constant will to serve you better.
+                      We now serve customers all over India and are thrilled to be a part of this domain.</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <img src="img/nitish.jpg" class="img-fluid member-image" alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="card mb-3" style="max-width: 100%;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="img/ayush.jpg" class="img-fluid member-image" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Ayush Inkane</h5>
+                    <p class="card-text"><small class="text-muted">President</small></p>
+                    <p class="card-text">
+                      He holds a Bachelor’s Degree in Technology (Electrical and Electronic Engineering) from Pimpri Chinchwad College Of Engineering, Pune.
+                      Ayush bring new energy, innovative ideas and solutions to your real estate problems that empower clients to find more perfect space. He works to create a company culture that sustains a creative workforce and encourages a healthy work-life balance. Our team opportunities to share their work, take time off to volunteer new skills and attend events. And we’re always looking for new engineers and artists, misfits and number crunchers to join our team. We now serve customers all over India and are thrilled to be a part of this domain. We are always at your service with our constant will to serve you better.
+                      <blockquote>“We are thrilled to open this business to give a new definition to real estate business and showcase our urge to solve every possible hurdle clients are facing.”</blockquote>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="card mb-3" style="max-width: 100%;">
+              <div class="row no-gutters">
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Savita Gupta</h5>
+                    <p class="card-text"><small class="text-muted">Vice President</small></p>
+                    <p class="card-text">Another craftsman in establishing this company, the Vice-President of Mirage Group, Savita Gupta when stepped out, her passion and creativity is what made her stand different from the crowd. She truly believes in the capability of illustration and design and its ability to facilitate the real estate business and inspire more and more people everywhere. She believes that there is a better approach of doing marketing. A less meddlesome and more valuable way where consumers are earned rather than bought.<br>
+                    In her words - <blockquote>"This company gives me a new way to show and share my passion."</blockquote></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <img src="img/user.png" class="img-fluid member-image" alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+    </div>
+    <div class="ui inverted vertical footer segment">
+      <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+          <div class="three wide column">
+            <h4 class="ui inverted header">
+              Sitemap
+            </h4>
+            <div class="ui inverted link list">
+              <a class="item" href="about.html#">About Us</a>
+              <a class="item" href="partners.html#">Our Partners</a>
+            </div>
+          </div>
+          <div class="three wide column">
+            <h4 class="ui inverted header">
+              Services
+            </h4>
+            <div class="ui inverted link list">
+              <a class="item">Real Estate Consulting</a>
+              <a class="item">NRI Services</a>
+              <a class="item">Home Loan& Legal Consultation</a>
+              <a class="item">After Sales Assistance</a>
+            </div>
+          </div>
+          <div class="seven wide column">
+            <h4 class="ui inverted header">
+              Mirage Group
+            </h4>
+            <p>
+              Providing you end to end solution to all your property investments.<br>
+              Our RERA no. A52100018123
+            </p>
+            <p>© MirageGroup | 2019</p>
+          </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <img class="ui centered tiny image" src="img/logo.png" />
+        <div class="ui horizontal inverted small divided link list">
+          <a class="item" href="disclaimer.html#">Disclaimer</a>
+          <a class="item" href="tnc.html#">Terms and Conditions</a>
+          <a class="item" href="privacy_policy.html#">Privacy Policy</a>
+        </div>
+        <div class="ui inverted divider"></div>
+        <div class="ui center aligned inverted segment">
+          <p><b>Developed by <a href="https://anurag-ks.github.io">Anurag Sharma</a></b></p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="js/glide.min.js"></script>
+  <script type="text/javascript">
+    $(document)
+    .ready(function() {
+
+      function sendEmail() {
+        Email.send({
+            SecureToken : '140b61e6-f250-40e8-8018-d7130027003e',
+            To : 'anuragks029@gmail.com',
+            From : "anssharma61@gmail.com",
+            Subject : $("#full_name").val(),
+            Body : $("#full_name").val()+ "\n" + $("#phone_number").val() + "\n" +$("#location").val()
+        }).then(
+          message => $("#exampleModal").modal("toggle"),
+          error => console.log(error)
+        );
+      }
+
+      function openModal(){
+          $("#exampleModal").modal("show");
+      }
+
+      $("submit").click(sendEmail);
+
+      $(".trending_slide").click(openModal);
+
+      $(".d-block").on('click', function(){
+        var content = $(this).attr('data-content')
+        var location = $(this).attr('data-location')
+        $('#projectContent').text(content)
+        $('#projectLocation').text(location)
+        $("#projectModal").modal("show")
+      });
+
+      var glide = new Glide('.glide', {
+                              type: 'carousel',
+                              perView: 5,
+                              focusAt: 'center',
+                              autoplay: 1500,
+                            })
+
+      glide.mount()
+
+      $('.carousel').carousel()
+    })
+  </script>
+</html>

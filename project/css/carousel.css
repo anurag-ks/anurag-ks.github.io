@@ -1,9 +1,12 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+.member-image{
+  min-width: 100%;
+  height: 370px;
+}
 
 body {
-  padding-bottom: 40px;
   color: #5a5a5a;
 }
 html{
@@ -11,8 +14,12 @@ html{
 }
 
 *{
-  font-family: 'Abel', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   transition: 0.2s;
+}
+
+footer{
+
 }
 
 .logo{
@@ -71,7 +78,7 @@ html{
    height: 500px !important;
 }
 
-.carousel-inner > .carousel-item > img{
+.carousel-inner > .carousel-item > a > img{
   position: absolute;
   top: 0;
   left: 0;
