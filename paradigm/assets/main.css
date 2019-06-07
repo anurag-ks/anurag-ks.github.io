@@ -57,6 +57,7 @@ html, body { margin: 0; padding: 0; }
 .logo-header{
   height: 100vh;
   background-image: url("img/background.png");
+  background-position: center;
 }
 .logo-header h2 {
   margin-bottom: 0em;
@@ -106,6 +107,7 @@ html, body { margin: 0; padding: 0; }
 
 .ui.vertical.stripe {
   padding: 8em 0em;
+  font-family: 'Quicksand', sans-serif !important;
 }
 .ui.vertical.stripe h3 {
   font-size: 2em;
