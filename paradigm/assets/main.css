@@ -1,11 +1,47 @@
+html, body { margin: 0; padding: 0; }
 .hidden.menu {
   display: none;
 }
 
+.triangle {
+  height: 0;
+  width: 0;
+  border-left: 700px solid #0892d0;
+  border-right: 700px solid transparent;
+  border-bottom: 500px solid transparent;
+  border-top: 500px solid transparent;
+  position: absolute;
+  opacity: 0.7;
+  z-index: auto;
+}
+
+.triangle2 {
+  height: 0;
+  width: 0;
+  top: 50vh;
+  border-left: 700px solid #0892d0;
+  border-right: 700px solid transparent;
+  border-bottom: 500px solid transparent;
+  border-top: 500px solid transparent;
+  position: absolute;
+  opacity: 0.9;
+  transform: rotate(180deg);
+  z-index: -1;
+}
+
+@media only screen and (max-width: 479px){
+    .triangle {
+      border-left: 300px solid #0892d0;
+      border-right: 300px solid transparent;
+      border-bottom: 200px solid transparent;
+      border-top: 200px solid transparent;
+     }
+}
+
 .masthead.segment {
   min-height: 600px;
-  padding: 1em 0em;
-  background-image: url("img/background.jpg") !important;
+  background: url('img/background.png') !important;
+  background-repeat: no-repeat;
 }
 .masthead .logo.item img {
   margin-right: 1em;
@@ -13,8 +49,16 @@
 .masthead .ui.menu .ui.button {
   margin-left: 0.5em;
 }
-.masthead h1.ui.header {
-  margin-top: 3em;
+
+.logo{
+  width: 270px;
+  height: 300px;
+}
+.logo-header{
+  height: 100vh;
+  background-image: url("img/background.png");
+}
+.logo-header h2 {
   margin-bottom: 0em;
   font-size: 4em;
   font-weight: normal;
@@ -27,6 +71,17 @@
   -webkit-animation: hue 10s infinite linear;
 }
 
+.info-header{
+  height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  background-image: -webkit-linear-gradient(45deg, #0892d0, #17cfd8);
+  color: #fafafa;
+}
+
+.info-header h3{
+  margin-top: 100px;
+}
+
 @-webkit-keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg);
@@ -34,6 +89,14 @@
   to {
     -webkit-filter: hue-rotate(-360deg);
   }
+}
+
+.heading{
+  width: 50vw;
+  height: 400px;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  margin-top: 50px !important;
 }
 
 .masthead h2 {
