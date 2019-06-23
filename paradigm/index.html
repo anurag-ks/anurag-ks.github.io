@@ -1,160 +1,305 @@
-
 <!DOCTYPE html>
-<html>
-<head>
-  <!-- Standard Meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<html lang="en">
+  <head>
+    <title>Paradigm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Site Properties -->
-  <title>Paradigm</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/main.css" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Anurag Sharma" />
 
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-  <script>
-  $(document)
-    .ready(function() {
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Muli:300,400,700,900" rel="stylesheet">
 
-      // fix menu when passed
-      $('.masthead')
-        .visibility({
-          once: false,
-          onBottomPassed: function() {
-            $('.fixed.menu').transition('fade in');
-          },
-          onBottomPassedReverse: function() {
-            $('.fixed.menu').transition('fade out');
-          }
-        })
-      ;
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-    })
-  ;
-  </script>
-  <script async>(function(w, d) { w.CollectId = "5cfa42a67e286248f6587245"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
-</head>
-<body>
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
 
-<!-- Following Menu -->
-<div class="ui large top fixed hidden menu">
-  <div class="ui container">
-    <a class="active item">Home</a>
-    <a class="item">Services</a>
-    <a class="item">Location</a>
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
-</div>
-
-<!-- Sidebar Menu -->
-<div class="ui vertical inverted sidebar menu">
-  <a class="active item">Home</a>
-  <a class="item">Services</a>
-  <a class="item">Location</a>
-</div>
 
 
-<!-- Page Contents -->
-<div class="pusher">
-    <div class="ui vertical stripe quote segment main_head">
-      <div class="ui equal width stackable internally celled grid">
-        <div class="center aligned row">
-          <div class="column logo-header">
-            <img src="assets/img/logo.svg" class="logo">
-            <h2>Paradigm</h2>
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo"><a href="index.html" class="text-uppercase">Paradigm</a></div>
+          <div>
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-xl-block">
+                <li><a href="#home-section" class="nav-link">Home</a></li>
+                <li><a href="#work-section" class="nav-link">Services</a></li>
+                <li><a href="#about-section" class="nav-link">About Us</a></li>
+                <li><a href="#location-section" class="nav-link">Location</a></li>
+                <li><a href="#contact-section" class="nav-link">Contact Us</a></li>
+
+              </ul>
+            </nav>
           </div>
-          <div class="column info-header">
-            <h3>Learn More</h3>
-            <div class="ui divider">
+        </div>
+      </div>
+    </header>
 
-            </div>
-            <div class="info-menu">
-              <p>
-                <div class="ui massive middle aligned animated list">
-                  <div class="item">About Us</div>
-                  <div class="item">Services</div>
-                  <div class="item">Location</div>
-                  <div class="item">Contact Us</div>
-                </div>
-              </p>
-              <div class="ui divider">
-
+    <div class="intro-section custom-owl-carousel" id="home-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 mr-auto">
+            <div class="owl-carousel slide-one-item-alt-text">
+              <div class="slide-text">
+                <h1>3D Printing</h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                <p><a href="#work-section" class="btn btn-outline-light py-3 px-5">Learn More</a></p>
               </div>
+              <div class="slide-text">
+                <h1>CAD feasibility</h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                <p><a href="#work-section" class="btn btn-outline-light py-3 px-5">Learn More</a></p>
+              </div>
+              <div class="slide-text">
+                <h1>Design Consultation</h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                <p><a href="#work-section" class="btn btn-outline-light py-3 px-5">Learn More</a></p>
+              </div>
+              <div class="slide-text">
+                <h1>Reverse Engineering</h1>
+                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                <p><a href="#work-section" class="btn btn-outline-light py-3 px-5">Learn More</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 ml-auto" >
+
+            <div class="owl-carousel slide-one-item-alt">
+              <img src="images/img_1.jpg" class="img-fluid">
+              <img src="images/img_2.jpg" class="img-fluid">
+              <img src="images/img_3.jpg" class="img-fluid">
+              <img src="images/img_4.jpg" class="img-fluid">
+            </div>
+
+            <div class="owl-custom-direction">
+              <a href="#" class="custom-prev"><span class="icon-keyboard_arrow_left"></span></a>
+              <a href="#" class="custom-next"><span class="icon-keyboard_arrow_right"></span></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section section-2" id="work-section" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5" data-aos="fade-up">
+            <h2 class="section-title">Our Services</h2>
+            <p>We offer a wide range of 3D printing services.</p>
+            <p>Click on the images below to learn more about them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="owl-carousel nonloop-block-13" data-aos="fade-up">
+          <a class="work-thumb" href="images/sla.jpg" data-fancybox="gallery" data-caption="SLA or Stereolithography belongs to a family of additive manufacturing technologies known as vat photopolymerization. These machines are all built around the same principle, using a light source—a laser or projector—to cure liquid resin into hardened plastic. The main physical differentiation lies in the arrangement of the core components, such as the light source, the build platform, and the resin tank. SLA 3D printers use light-reactive thermoset materials called “resin.” When SLA resins are exposed to certain wavelengths of light, short molecular chains join together, polymerizing monomers and oligomers into solidified rigid or flexible geometries.">
+            <div class="work-text">
+              <h3>SLA</h3>
+              <span class="category">Stereolithography</span>
+            </div>
+            <img src="images/sla.jpg" alt="Image" class="img-fluid">
+          </a>
+          <a class="work-thumb" href="images/sls.jpg" data-fancybox="gallery" data-caption="Selective laser sintering (SLS) is an additive manufacturing (AM) technique that uses a laser as the power source to sinter powdered material (typically nylon/polyamide), aiming the laser automatically at points in space defined by a 3D model, binding the material together to create a solid structure. Low cost per part, high productivity, and established materials make the technology ideal for a range of applications from functional prototyping to small batch or bridge manufacturing.">
+            <div class="work-text">
+              <h3>SLS</h3>
+              <span class="category">Selective Laser Sintering</span>
+            </div>
+            <img src="images/sls.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/vc.jpg" data-fancybox="gallery" data-caption="Vacuum Casting is a copying technique used for the production of small series of functional plastic parts. Using two-component polyurethanes and silicone molds, Vacuum Casting is known for its fast production of high-quality prototypes or end-use products.">
+            <div class="work-text">
+              <h3>VC</h3>
+              <span class="category">Vacuum Casting</span>
+            </div>
+            <img src="images/vc.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/frp.jpg" data-fancybox="gallery" data-caption="Fiber-reinforced plastics (FRP) have recently gained attention for their potential use in 3D printing to enhance the mechanical strength and elasticity of manufactured parts. These composite materials can match the strength of many metals, but at much lighter weight. Exhibiting properties such as high tensile strength, chemical resistance, stiffness, temperature tolerance and low thermal expansion is helping FRP gain momentum in the 3D printing industry">
+            <div class="work-text">
+              <h3>FRP</h3>
+              <span class="category">Fiber-Reinforced Plastics</span>
+            </div>
+            <img src="images/frp.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/soft_tooling.jpg" data-fancybox="gallery" data-caption="Short run production in which one can produce anywhere between 1000-10,000 parts from metal moulds.">
+            <div class="work-text">
+              <h3>Soft Tooling</h3>
+              <span class="category"></span>
+            </div>
+            <img src="images/soft_tooling.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/cnc.jpg" data-fancybox="gallery" data-caption="CNC machining is subtractive. It starts with a block of material (called a blank), and cuts away material to create the finished part. To do this, cutters and spinning tools are used to shape the piece. Some advantages of CNC machining include great dimensional accuracy as well as many compatible materials, including wood, metals and, plastics.">
+            <div class="work-text">
+              <h3>CNC</h3>
+              <span class="category"></span>
+            </div>
+            <img src="images/cnc.jpg" alt="Image" class="img-fluid">
+          </a>
+      </div>
+
+    </div>
+
+    <div class="site-section" id="contact-section"  data-aos="fade">
+      <div class="container">
+
+        <div class="row align-items-center">
+          <div class="col-md-5 order-1 order-md-2 mb-5 mb-md-0">
+            <img src="images/about_1.jpg"class="img-fluid">
+          </div>
+          <div class="col-md-6 mr-auto order-2 order-md-1">
+
+            <h2 class="section-title mb-3">Contact Us</h2>
+            <p class="mb-5">Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
+
+            <form method="post">
+              <div class="form-group row">
+                <div class="col-md-6 mb-4">
+                  <input type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Last name">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="Subject">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="email" class="form-control" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <input type="submit" class="btn btn-primary py-3 px-5 btn-block send_message" value="Send Message">
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-section bg-light" id="about-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h3>About Us</h3>
+            <p>Paradigm is a professional hub for 3D printing services. We provide fast and cost effective 3D printed products using state of the art technologies. Our objective is to offer the best quality products in plastics at rapid speed. Founded in 2019, Paradigm is fuelled by the determination to advance the current technological arena and simplify the complexities of 3D printing for maximum people to integrate its benefits into their workflow.</p>
+          </div>
+
+          <div class="col-md-3 ml-auto">
+            <h3>Links</h3>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#home-section" class="smoothscroll">Home</a></li>
+              <li><a href="#work-section" class="smoothscroll">Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3 id="location-section">Location</h3>
+            <p>
+              <div id="map"></div>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class="border-top pt-5">
               <p>
-                <i class="facebook square icon"></i>
-                <i class="instagram icon"></i>
-                <i class="twitter square icon"></i>
+                <small class="block">&copy; <script>document.write(new Date().getFullYear());</script> <strong>Paradigm</strong> Paradigm. All Rights Reserved.</small>
               </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="triangle"></div>
-    <div class="ui vertical stripe segment">
-      <div class="ui middle aligned stackable grid container">
-        <div class="row">
-          <div class="eight wide column">
-            <h3 class="ui header">We Help Companies and Companions</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h3 class="ui header">We Make Bananas That Can Dance</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-          <div class="six wide right floated column">
-            <img src="assets/img/white-image.png" class="ui large bordered rounded image">
-          </div>
-        </div>
-        <div class="row">
-          <div class="center aligned column">
-            <a class="ui huge button">Check Them Out</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="triangle2">
+    </footer>
 
-    </div>
-  </div>
-</div>
 
-<div class="ui inverted vertical footer segment">
-  <div class="ui container">
-    <div class="ui stackable inverted divided equal height stackable grid">
-      <div class="three wide column">
-        <h4 class="ui inverted header">About</h4>
-        <div class="ui inverted link list">
-          <a href="#" class="item">Sitemap</a>
-          <a href="#" class="item">Contact Us</a>
-          <a href="#" class="item">Location</a>
-        </div>
-      </div>
-      <div class="three wide column">
-        <h4 class="ui inverted header">Services</h4>
-        <div class="ui inverted link list">
-          <a href="#" class="item">Service 1</a>
-          <a href="#" class="item">Service 2</a>
-          <a href="#" class="item">Service 3</a>
-          <a href="#" class="item">Service 4</a>
-        </div>
-      </div>
-      <div class="seven wide column">
-        <h4 class="ui inverted header">Paradigm</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
 
+  </div> <!-- .site-wrap -->
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  // Initialize and add the map
+  function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+    document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBN1yLbw2SDfCYh4HfQVdt9yl9qRezm5Pw&callback=initMap">
+  </script>
+  </body>
 </html>
