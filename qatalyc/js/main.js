@@ -1,17 +1,17 @@
 ;(function () {
-	
+
 	'use strict';
 
 
 
-	// iPad and iPod detection	
+	// iPad and iPod detection
 	var isiPad = function(){
 		return (navigator.platform.indexOf("iPad") != -1);
 	};
 
 	var isiPhone = function(){
 	    return (
-			(navigator.platform.indexOf("iPhone") != -1) || 
+			(navigator.platform.indexOf("iPhone") != -1) ||
 			(navigator.platform.indexOf("iPod") != -1)
 	    );
 	};
@@ -50,7 +50,7 @@
 		$('.animate-box').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-				
+
 				i++;
 
 				$(this.element).addClass('item-animate');
@@ -69,9 +69,9 @@
 							el.removeClass('item-animate');
 						},  k * 200, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '85%' } );
@@ -89,9 +89,9 @@
 	var counterWayPoint = function() {
 		if ($('#colorlib-counter').length > 0 ) {
 			$('#colorlib-counter').waypoint( function( direction ) {
-										
+
 				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-					setTimeout( counter , 400);					
+					setTimeout( counter , 400);
 					$(this.element).addClass('animated');
 				}
 			} , { offset: '90%' } );
@@ -104,21 +104,25 @@
 		owl.owlCarousel({
 			animateOut: 'fadeOut',
 		   animateIn: 'fadeIn',
-		   autoplay: true,
+		   autoplay: false,
 		   loop:true,
 		   margin:0,
 		   nav:true,
 		   dots: false,
-		   autoHeight: true,
+		   autoHeight: false,
+			 items:3,
 		   responsive:{
 		      0:{
-		         items:1
+		         items:1,
+						 slideBy:1
 		      },
 		      600:{
-		         items:2
+		         items:2,
+						 slideBy:2
 		      },
 		      1000:{
-		         items:3
+		         items:3,
+						 slideBy:3
 		      }
 		   },
 		   navText: [
@@ -157,10 +161,10 @@
 		      "<i class='icon-arrow-left3 owl-direction'></i>",
 		      "<i class='icon-arrow-right3 owl-direction'></i>"
 	     	]
-		});	
+		});
 	};
 
-	
+
 
 
 	// Document on load.
