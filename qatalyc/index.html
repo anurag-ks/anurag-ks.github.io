@@ -59,7 +59,7 @@
 	<div id="colorlib-about">
 		<div class="container">
 			<div class="row text-center">
-				<img src="images/logo_main.svg" class="logo animate-box"/>
+				<img src="images/logo_main.svg" class="animate-box"/>
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0 text-center animate-box intro-heading">
@@ -81,32 +81,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h2>Additive <br> Manufacturing <br><br>
-					<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#additiveModal" value="Learn More" style="align:center;"></h2>
+					<h2>
+						<span style="text-decoration:overline;">Additive</span> <br>Manufacturing<br><br>
+						<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#additiveModal" value="Learn More" style="align:center;">
+					</h2>
 				</div>
 				<div class="col-md-6">
-					<h2>CAD <br> feasibility</h2>
+					<h2><span style="text-decoration:overline;">CAD</span> <br> feasibility</h2>
 				</div>
 			</div>
+			<br>
 			<div class="row">
 				<div class="col-md-6">
-					<h2>Reverse <br> Engineering</h2>
+					<h2><span style="text-decoration:overline;">Reverse</span> <br> Engineering</h2>
 				</div>
 				<div class="col-md-6">
-					<h2>Design <br> Consultation</h2>
+					<h2><span style="text-decoration:overline;">Design</span> <br> Consultation</h2>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div id="colorlib-blog">
-		<div class="container">
+		<div class="container" >
 			<div class="row">
 				<div class="col-md-6">
 
 				</div>
 				<div class="col-md-6 expertise_heading_div">
-					<h2 class="expertise_heading"><hr>Expertise</h2>
+					<h2 class="expertise_heading">Expertise</h2>
 				</div>
 			</div>
 			<div class="row animate-box">
@@ -115,7 +118,7 @@
 						<div class="col-md-12">
 							<div class="article">
 								<a data-toggle="modal" data-target="#slaModal" class="blog-img">
-									<img class="img-responsive" src="images/sla.jpg">
+									<img class="img-responsive" src="images/SLA.jpeg">
 									<div class="overlay"></div>
 									<div class="link">
 										<span class="read">Read more</h2>
@@ -127,7 +130,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item" style="margin-top:3%;">
+					<div class="item" style="margin-top:5%;">
 						<div class="col-md-12">
 							<div class="article">
 								<a data-toggle="modal" data-target="#slsModal" class="blog-img">
@@ -143,7 +146,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item" style="margin-top:6%;">
+					<div class="item" style="margin-top:10%;">
 				    <div class="col-md-12">
 				      <div class="article">
 				        <a data-toggle="modal" data-target="#vcModal" class="blog-img">
@@ -175,7 +178,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item" style="margin-top:3%;">
+					<div class="item" style="margin-top:5%;">
 						<div class="col-md-12">
 							<div class="article">
 								<a data-toggle="modal" data-target="#stModal" class="blog-img">
@@ -191,7 +194,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item" style="margin-top:6%;">
+					<div class="item" style="margin-top:10%;">
 						<div class="col-md-12">
 							<div class="article">
 								<a data-toggle="modal" data-target="#cncModal" class="blog-img">
@@ -213,24 +216,37 @@
 	</div>
 
 	<span id="roadmap"></span>
-	<div id="colorlib-services">
+	<div id="colorlib-services" style="background:#FAFAF6!important;">
 		<div class="container" style="position:relative;">
-			<h2 class="road"><strong>R</strong>oad</h2>
+			<div class="row">
+				<div class="col-md-6 road_heading_div">
+					<h2 class="road_heading"><strong>Road</strong></h2>
+				</div>
+				<div class="col-md-6">
+
+				</div>
+			</div>
 			<div class="row" style="padding:5px;">
-					<div class="col-md-3">
-						<div class="services animate-box">
-							<h3>1 - Planning</h3>
-							<ul>
+				<div class="col-md-3" style="margin-top:-5%;">
+					<div class="services animate-box">
+						<div class="content">
+							<ul style="margin-top:7%">
 								<li>CAD file received from the client</li>
 								<li>Data Analysis/Feasibility Check</li>
 								<li>Process Selection</li>
 								<li>Material Selection</li>
 							</ul>
 						</div>
+						<div class="desc" style="display:flex;align-items:center;justify-content:center;">
+							<div class="meta">
+								<h3>Planning <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:1.7em;"></i></h3>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="services animate-box">
-							<h3>2 - Execution</h3>
+				</div>
+				<div class="col-md-3" style="margin-top:5%;">
+					<div class="services animate-box">
+						<div class="content">
 							<ul>
 								<li>Part Orientation</li>
 								<li>Machine Calibration</li>
@@ -238,26 +254,51 @@
 								<li>Post Processing</li>
 							</ul>
 						</div>
+						<div class="desc">
+							<div class="meta">
+								<h3>Execution <br> <i class="fa fa-cogs" aria-hidden="true" style="font-size:1.7em;"></i></h3>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="services animate-box">
-							<h3>3 - Quality Assurance/Quality Check</h3>
+				</div>
+				<div class="col-md-3" style="margin-top:-5%;">
+					<div class="services animate-box">
+						<div class="content">
 							<ul>
 								<li>Component Accuracy Testing</li>
 							</ul>
 						</div>
+						<div class="desc">
+							<div class="meta">
+								<h3>Quality Check <br> &nbsp; <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:1.5em;"></i></h3>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="services animate-box">
-							<h3>4 - Dispatch</h3>
+				</div>
+				<div class="col-md-3" style="margin-top:5%;">
+					<div class="services animate-box">
+						<div class="content">
 							<ul>
 								<li>Packaging & Delivery</li>
 								<li>Feedback</li>
 							</ul>
 						</div>
+						<div class="desc">
+							<div class="meta">
+								<h3>Dispatch <br><i class="fa fa-truck" aria-hidden="true" style="font-size:1.7em;"></i> </h3>
+							</div>
+						</div>
 					</div>
 				</div>
-			<h2 class="map"><strong>M</strong>ap</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+
+				</div>
+				<div class="col-md-6 map_heading_div">
+					<h2 class="map_heading"><strong>Map</strong></h2>
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -315,29 +356,35 @@
 	<div id="colorlib-about-us">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					<h2 class="about_us">about <br> us</h2>
+				<div class="col-md-3">
+					<h3 class="about_us">about us</h3>
 				</div>
-				<div class="col-md-6">
-					<div style="text-align:justify;font-size:20px;">
-						<p>
-							A professional hub offering 3D printing and prototyping solutions, <strong>Qatalyc</strong> stands for evolution, innovation and speed. We provide fast and cost effective products using state of the art technology. Our objective is to adopt a detailed roadmap in providing top quality parts in polymers. Founded in <strong>2019</strong>, Qatalyc is fueled by the determination to advance the current technological arena and simplify the complexities of 3D printing for maximum people to integrate its benefits into their workflow.
-						</p>
-					</div>
+				<div class="col-md-9" style="margin-top:2em;">
+					<p style="text-align:justify;font-size:16px;color:#012D20;">
+						A professional hub offering 3D printing and prototyping solutions, <strong>Qatalyc</strong> stands for evolution, innovation and speed. We provide fast and cost effective products using state of the art technology. Our objective is to adopt a detailed roadmap in providing top quality parts in polymers. Founded in <strong>2019</strong>, Qatalyc is fueled by the determination to advance the current technological arena and simplify the complexities of 3D printing for maximum people to integrate its benefits into their workflow.
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<span id="work"></span>
-	<div id="colorlib-services">
-			<div class="container" style="position:relative;">
-				<h2 class="road"><strong>O</strong>ur</h2>
+	<div id="colorlib-services" style="padding:0!important">
+			<div class="container" style="position:relative;width:70%;">
+				<div class="row">
+					<div class="col-md-6 text-center">
+						<span class="float-md-left work_heading">
+							<h2>our</h2>
+						</span>
+					</div>
+					<div class="col-md-6">
+					</div>
+				</div>
 				<div class="row text-center">
 					<div class="col-md-3">
 						<div class="article">
 							<a class="blog-img">
-								<img class="img-responsive" src="images/work/Acrylic CNC Machining- Clear & Diffused.jpeg" height="300px">
+								<img class="img-responsive" src="images/work/Acrylic CNC Machining- Clear & Diffused.jpeg">
 								<div class="overlay"></div>
 								<div class="link">
 									<span class="read">Acrylic CNC <br>Machining</h2>
@@ -348,7 +395,7 @@
 					<div class="col-md-3">
 						<div class="article">
 							<a class="blog-img">
-								<img class="img-responsive" src="images/work/Heat, Sink Aluminium CNC Machining.jpeg" height="300px">
+								<img class="img-responsive" src="images/work/Heat, Sink Aluminium CNC Machining.jpeg">
 								<div class="overlay"></div>
 								<div class="link">
 									<span class="read">Aluminium CNC <br> Machining</h2>
@@ -359,7 +406,7 @@
 					<div class="col-md-3">
 						<div class="article">
 							<a class="blog-img">
-								<img class="img-responsive" src="images/work/Rubber & Plastic Vacuum Casting.jpeg" height="300px">
+								<img class="img-responsive" src="images/work/Rubber & Plastic Vacuum Casting.jpeg">
 								<div class="overlay"></div>
 								<div class="link">
 									<span class="read">Rubber & Plastic <br> Vacuum Casting</h2>
@@ -368,20 +415,33 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="services">
-							<br>
-							<br>
-							<br>
-							<a href="work.html">
-								<input type="button" class="btn btn-primary" value="See More">
+						<div class="article">
+							<a class="blog-img">
+								<img class="img-responsive" src="images/work/Vacuum Casting with Insert Moulding.jpeg">
+								<div class="overlay"></div>
+								<div class="link">
+									<span class="read">Vacuum Casting <br> Insert Moulding</h2>
+								</div>
 							</a>
 						</div>
 					</div>
 				</div>
-				<h2 class="map"><strong>W</strong>ork</h2>
+				<div class="row">
+					<div class="col-md-6 text-center">
+					</div>
+					<div class="col-md-6 text-center">
+						<span class="float-md-right work_heading">
+							<h2>work</h2>
+						</span>
+					</div>
+				</div>
+				<a href="work.html">
+					<input type="button" class="btn see_more" value="See More">
+				</a>
 			</div>
 		</div>
-	<div id="colorlib-content">
+
+	<div id="colorlib-content" style="background:#bfbfbf!important;padding:1.5em!important">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
