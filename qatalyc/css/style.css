@@ -510,8 +510,8 @@ header {
   padding-top: 10px;
   margin-left: -5%;
   margin-right: auto;
-  width: 40%;
-  height: 40%;
+  width: 60%;
+  height: 60%;
 }
 @media screen and (max-width:768px){
   #logo{
@@ -598,8 +598,8 @@ header {
 #colorlib-about-us{
   background-color: #FAFAF6;
   padding: 0 !important;
-  padding-top: 1.5em!important;
-  padding-bottom: 1.5em!important;
+  padding-top: 5em!important;
+  padding-bottom: 5em!important;
 }
 .box{
   background: white;
@@ -772,7 +772,7 @@ header {
 .work_heading h2{
   font-family: 'Brygada 1918', serif;
   font-size: 100px;
-  color: #bfbfbf;
+  color: #FAFAF6;
   font-weight: bold;
 }
 .see_more{
@@ -1394,19 +1394,17 @@ header {
   position: relative;
   margin-bottom: 40px; }
   .f-entry .desc h3 {
-    font-size: 20px;
-    line-height: 1.4;
-    margin-bottom: 10px; }
+    font-size: 20px; }
     .f-entry .desc h3 a {
-      color: #4d4d4d;
+      color: #FAFAF6;
       text-decoration: none; }
   .f-entry .desc span {
-    color: #000;
+    color: #FAFAF6;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2px;
     display: block;
-    margin-bottom: 10px; }
+    margin-bottom: 5px; }
 
 .btn {
   margin-right: 4px;
@@ -1724,24 +1722,23 @@ input[type="text"] {
 
 #footer {
   padding-top: 1.5em;
-  padding-bottom: 1.2em;
-  background-color: #FAFAF6;
+  padding-bottom: 0.5em;
+  background-color: #012D20;
   display: block;
   width: 100%; }
   #footer h2 {
-    color: #000;
+    color: #FAFAF6;
     letter-spacing: 1px;
-    font-weight: 300;
-    margin-bottom: 2em; }
+    font-weight: 300; }
   #footer p:last-child {
     margin-bottom: 0; }
   #footer p.colorlib-social-icons a:hover, #footer p.colorlib-social-icons a:focus {
     text-decoration: none !important; }
   #footer p.colorlib-social-icons i {
     font-size: 24px;
-    color: #012d20; }
+    color: #FAFAF6; }
   #footer p .block {
-    color: #1a1a1a;
+    color: #FAFAF6;
     font-size: 14px; }
   #footer .subscribe .form-control {
     -webkit-box-shadow: none;
@@ -1754,7 +1751,6 @@ input[type="text"] {
     font-size: 16px;
     background: #fafafa;
     font-weight: 400;
-    margin-bottom: 5px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
