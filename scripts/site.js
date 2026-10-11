@@ -23,18 +23,21 @@
     update();
   }
 
-  /* ---------- Hero: a machine scans the field ---------- */
-  const MAP_SRC_W = 1200;          // source photo size the data map was sampled from
-  const MAP_SRC_H = 1600;
-  const HOVER_RADIUS = 80;
-  const INK_RGB = '20, 22, 30';
-  const ACCENT_RGB = '244, 60, 0';
-  const CREAM_HEX = '#ece4c9';
+  /* ---------- Hero: the field photo as live ASCII ---------- */
+  const RAMP = ' .,:-~=+*#%@';
+  const SUBJECT_RAMP = '*#%@';
+  const ASCII_INK = '#14161e';
+  const ASCII_ACCENT = '#f43c00';
+  const BG_GAMMA = 1.0;
+  const BG_WEIGHT = 0.75;
+  const SWELL_AMPLITUDE = 0.07;       // a breeze rolling over the terraces
+  const FRAME_MS = 50;              // idle animation runs at ~20fps
+  const DECODE_MS = 1600;
+  const HOVER_CELLS = 5;
 
   const clamp01 = (v) => Math.min(1, Math.max(0, v));
-  const ramp = (p, a, b) => clamp01((p - a) / (b - a));
 
-  function loadFieldMap(src) {
+  function loadAsciiMap(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => {
@@ -42,128 +45,128 @@
         c.width = img.naturalWidth; c.height = img.naturalHeight;
         const ctx = c.getContext('2d');
         ctx.drawImage(img, 0, 0);
-        resolve({ cols: c.width, rows: c.height, data: ctx.getImageData(0, 0, c.width, c.height).data });
+        resolve({ w: c.width, h: c.height, data: ctx.getImageData(0, 0, c.width, c.height).data });
       };
       img.onerror = () => reject(new Error(`Could not load ${src}`));
       img.src = src;
     });
   }
 
-  async function initField() {
-    const hero = document.querySelector('[data-hero]');
-    const fig = hero && hero.querySelector('[data-field]');
-    const canvas = fig && fig.querySelector('[data-field-canvas]');
+  /** Font size that gives roughly the target column count for the canvas width. */
+  function asciiFontSize(width) {
+    const targetCols = width < 420 ? 78 : width < 700 ? 112 : 132;
+    return Math.max(7, Math.min(13, width / targetCols / 0.6));
+  }
+
+  async function initAscii() {
+    const fig = document.querySelector('[data-ascii]');
+    const canvas = fig && fig.querySelector('[data-ascii-canvas]');
     const ctx = canvas && canvas.getContext('2d');
     if (!ctx) return;
-
-    const scanEl = fig.querySelector('[data-field-scan]');
-    const pctEl = fig.querySelector('[data-field-pct]');
-    const boxEl = fig.querySelector('[data-field-box]');
-    const countEl = fig.querySelector('[data-field-count]');
-    const box = JSON.parse(fig.dataset.box);
+    const sizeEl = fig.querySelector('[data-ascii-size]');
+    const [focalX, focalY] = fig.dataset.focal.split(',').map(Number);
 
     let map;
     try {
-      map = await loadFieldMap('assets/hero/field-map.png');
+      map = await loadAsciiMap(fig.dataset.src);
     } catch (err) {
-      canvas.remove();              // the plain photo still works without the data layer
+      fig.hidden = true;            // no art is better than a broken canvas
       return;
     }
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
 
-    const state = { scan: 0, boxIn: 0, emph: 0 };
-    let geo = null;
+    let grid = null;                // { cols, rows, cw, ch, lum: Float32Array, sub: Uint8Array, reveal: Float32Array }
     let pointer = null;
-    let lastKey = '';
+    let start = performance.now();
+    let isVisible = true;
 
-    const layout = () => {
-      const fw = canvas.clientWidth, fh = canvas.clientHeight;
+    const build = () => {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(fw * dpr); canvas.height = Math.round(fh * dpr);
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const scale = Math.max(fw / MAP_SRC_W, fh / MAP_SRC_H);   // matches object-fit: cover
-      const ox = (fw - MAP_SRC_W * scale) / 2, oy = (fh - MAP_SRC_H * scale) / 2;
-      geo = { fw, fh, scale, ox, oy, cell: (MAP_SRC_W / map.cols) * scale };
-      Object.assign(boxEl.style, {
-        left: `${ox + box.x * MAP_SRC_W * scale}px`, top: `${oy + box.y * MAP_SRC_H * scale}px`,
-        width: `${box.w * MAP_SRC_W * scale}px`, height: `${box.h * MAP_SRC_H * scale}px`,
-      });
-      lastKey = '';
-    };
+      const size = asciiFontSize(w);
+      ctx.font = `${size}px "Geist Mono", ui-monospace, monospace`;
+      ctx.textBaseline = 'top';
+      const cw = ctx.measureText('M').width;
+      const ch = size * 1.12;
+      const cols = Math.ceil(w / cw), rows = Math.ceil(h / ch);
 
-    const draw = () => {
-      const { fw, fh, ox, oy, cell } = geo;
-      const scanY = state.scan * fh;
-      const key = `${scanY.toFixed(1)}|${state.boxIn.toFixed(3)}|${state.emph.toFixed(3)}|${pointer ? pointer.x + ',' + pointer.y : ''}`;
-      if (key === lastKey) return;
-      lastKey = key;
-
-      ctx.clearRect(0, 0, fw, fh);
-      if (scanY > 0) {
-        ctx.fillStyle = CREAM_HEX;
-        ctx.fillRect(0, 0, fw, scanY);
-      }
-      const half = cell / 2;
-      const inkAlpha = 1 - 0.5 * state.emph;
-      let drawn = 0;
-      for (let j = 0; j < map.rows; j++) {
-        const cy = oy + (j + 0.5) * cell;
-        if (cy > scanY || cy < -cell || cy > fh + cell) continue;
-        const grow = clamp01((scanY - cy) / 36);          // dots swell in just behind the scan line
-        for (let i = 0; i < map.cols; i++) {
-          const cx = ox + (i + 0.5) * cell;
-          if (cx < -cell || cx > fw + cell) continue;
-          const k = (j * map.cols + i) * 4;
-          const dark = 1 - map.data[k] / 255;
-          const isPerson = map.data[k + 1] > 115;
-          let r = half * (0.12 + 0.88 * Math.sqrt(dark));
-          if (isPerson) r = Math.max(r, half * 0.55);
-          if (pointer) {
-            const d = Math.hypot(cx - pointer.x, cy - pointer.y);
-            if (d < HOVER_RADIUS) r *= 1 + 0.6 * (1 - d / HOVER_RADIUS);
-          }
-          r = Math.min(r * grow, half * 1.05);
-          if (r < 0.3) continue;
-          ctx.fillStyle = isPerson ? `rgb(${ACCENT_RGB})` : `rgba(${INK_RGB}, ${inkAlpha})`;
-          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
-          drawn++;
+      // Cover-fit the map into the grid, keeping the subject (focal point) in view.
+      const scale = Math.max(w / map.w, h / map.h);
+      const ox = Math.min(0, Math.max(w - map.w * scale, w / 2 - focalX * map.w * scale));
+      const oy = Math.min(0, Math.max(h - map.h * scale, h / 2 - focalY * map.h * scale));
+      const lum = new Float32Array(cols * rows);
+      const sub = new Uint8Array(cols * rows);
+      const reveal = new Float32Array(cols * rows);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const mx = Math.min(map.w - 1, Math.max(0, Math.floor(((c + 0.5) * cw - ox) / scale)));
+          const my = Math.min(map.h - 1, Math.max(0, Math.floor(((r + 0.5) * ch - oy) / scale)));
+          const k = (my * map.w + mx) * 4;
+          const i = r * cols + c;
+          lum[i] = map.data[k] / 255;
+          sub[i] = map.data[k + 1] > 90 ? 1 : 0;
+          reveal[i] = (c / cols) * 0.65 + Math.random() * 0.35;   // a wave of decoding, left to right
         }
       }
-
-      const scanning = state.scan > 0 && state.scan < 1;
-      scanEl.style.opacity = scanning ? '1' : '0';
-      scanEl.style.setProperty('--scan-y', `${scanY}px`);
-      pctEl.textContent = `Scanning ${Math.round(state.scan * 100)}%`;
-      boxEl.style.opacity = String(state.boxIn);
-      boxEl.style.transform = `scale(${1.08 - 0.08 * state.boxIn})`;
-      countEl.textContent = `${drawn.toLocaleString('en-US')} points`;
+      grid = { cols, rows, cw, ch, lum, sub, reveal };
+      sizeEl.textContent = `${cols} × ${rows} chars`;
     };
 
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      if (prefersReducedMotion) {
-        Object.assign(state, { scan: 1, boxIn: 1, emph: 1 });
-      } else {
-        const rect = hero.getBoundingClientRect();
-        const p = clamp01(-rect.top / (rect.height - window.innerHeight));
-        state.scan = ramp(p, 0.03, 0.62);
-        state.boxIn = ramp(p, 0.62, 0.74);
-        state.emph = ramp(p, 0.64, 0.82);
+    const glyph = (i, t, decode) => {
+      const { lum, sub, reveal, cols } = grid;
+      if (decode < reveal[i]) return RAMP[1 + Math.floor(Math.random() * (RAMP.length - 1))];
+      const dark = 1 - lum[i];
+      if (sub[i]) return SUBJECT_RAMP[Math.min(3, Math.floor((0.35 + 0.65 * dark) * 4))];
+      const c = i % cols, r = (i / cols) | 0;
+      const swell = prefersReducedMotion ? 0 : Math.sin(c * 0.11 - r * 0.35 + t * 0.0014) * SWELL_AMPLITUDE;
+      const v = clamp01(Math.pow(dark, BG_GAMMA) * BG_WEIGHT + swell * dark);
+      return RAMP[Math.min(RAMP.length - 1, Math.floor(v * RAMP.length))];
+    };
+
+    const draw = (t) => {
+      const { cols, rows, cw, ch, sub } = grid;
+      const decode = prefersReducedMotion ? 1 : clamp01((t - start) / DECODE_MS) * 1.001;
+      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      const hc = pointer ? Math.floor(pointer.x / cw) : -99;
+      const hr = pointer ? Math.floor(pointer.y / ch) : -99;
+      for (const pass of [0, 1]) {                       // batch by colour: landscape, then subject
+        ctx.fillStyle = pass ? ASCII_ACCENT : ASCII_INK;
+        for (let r = 0; r < rows; r++) {
+          let line = '';
+          for (let c = 0; c < cols; c++) {
+            const i = r * cols + c;
+            const near = Math.abs(c - hc) <= HOVER_CELLS && Math.abs(r - hr) <= HOVER_CELLS / 2;
+            if (sub[i] !== pass) { line += ' '; continue; }
+            line += near && Math.random() < 0.6 ? RAMP[4 + Math.floor(Math.random() * 8)] : glyph(i, t, decode);
+          }
+          ctx.fillText(line, 0, r * ch);
+        }
       }
-      draw();
     };
-    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
 
+    let last = 0;
+    const loop = (t) => {
+      if (isVisible && !document.hidden && t - last >= FRAME_MS) { last = t; draw(t); }
+      requestAnimationFrame(loop);
+    };
+
+    build();
+    if (prefersReducedMotion) {
+      draw(performance.now());
+      window.addEventListener('resize', () => { build(); draw(performance.now()); });
+      return;
+    }
     canvas.addEventListener('pointermove', (e) => {
       const r = canvas.getBoundingClientRect();
-      pointer = { x: Math.round(e.clientX - r.left), y: Math.round(e.clientY - r.top) };
-      request();
+      pointer = { x: e.clientX - r.left, y: e.clientY - r.top };
     });
-    canvas.addEventListener('pointerleave', () => { pointer = null; request(); });
-    window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', () => { layout(); request(); });
-    layout();
-    update();
+    canvas.addEventListener('pointerleave', () => { pointer = null; });
+    window.addEventListener('resize', () => { build(); start = performance.now() - DECODE_MS; });
+    new IntersectionObserver(([entry]) => { isVisible = entry.isIntersecting; }).observe(canvas);
+    start = performance.now();
+    requestAnimationFrame(loop);
   }
 
   /* ---------- Statement word reveal tied to scroll ---------- */
@@ -253,7 +256,7 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   initNav();
-  initField();
+  initAscii();
   initWordReveal();
   initWave();
   initReveal();
