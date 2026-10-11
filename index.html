@@ -38,22 +38,31 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="hero" id="top" aria-labelledby="hero-heading">
-      <canvas class="hero__orb" data-orb aria-hidden="true"></canvas>
-      <div class="hero__copy">
+    <section class="hero" id="top" aria-labelledby="hero-heading" data-hero>
+      <div class="hero__stage">
+      <div class="hero__figure" data-hero-figure aria-hidden="true">
+        <img class="hero__pose" data-pose="1" src="assets/hero/pose-1.webp" width="1500" height="1996" alt="" fetchpriority="high">
+        <img class="hero__pose" data-pose="2" src="assets/hero/pose-2.webp" width="1500" height="1996" alt="" decoding="async">
+        <img class="hero__pose hero__pose--glow" data-glow="2" src="assets/hero/glow-2.webp" width="1500" height="1996" alt="" decoding="async">
+        <img class="hero__pose" data-pose="3" src="assets/hero/pose-3.webp" width="1500" height="1996" alt="" decoding="async">
+        <img class="hero__pose hero__pose--glow" data-glow="3" src="assets/hero/glow-3.webp" width="1500" height="1996" alt="" decoding="async">
+      </div>
+      <div class="hero__flash" data-hero-flash aria-hidden="true"></div>
+      <div class="hero__copy" data-hero-fade>
         <p class="eyebrow" data-rise>Anurag Sharma — Backend Engineer</p>
         <h1 id="hero-heading" class="hero__title">
-          Backend systems for<br>
-          <span class="muted">machines in the field.</span>
+          Backend systems<br>for machines<br>
+          <span class="muted">in the field.</span>
         </h1>
       </div>
-      <div class="hero__aside">
+      <div class="hero__aside" data-hero-fade>
         <p class="mono-caps">Backend developer at Carnot Technologies. APIs, data pipelines, applied ML and AI agents.</p>
         <a class="btn btn--accent" href="mailto:anssharma61@gmail.com">Get in touch</a>
       </div>
-      <p class="hero__status mono-caps" aria-label="Current status">
+      <p class="hero__status mono-caps" aria-label="Current status" data-hero-fade>
         <span class="pulse" aria-hidden="true"></span> Currently building at Carnot
       </p>
+      </div>
     </section>
 
     <!-- Statement: orange -->

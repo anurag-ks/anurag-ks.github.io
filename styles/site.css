@@ -126,9 +126,10 @@ svg, canvas { display: block; max-width: 100%; }
 .nav.is-floating .nav__logo { font-size: 1.1rem; }
 
 /* ---------- Hero ---------- */
-.hero {
-  position: relative;
-  min-height: 100svh;
+.hero { position: relative; height: 420svh; background: var(--accent); }
+.hero__stage {
+  position: sticky; top: 0;
+  height: 100svh;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: end;
@@ -139,17 +140,27 @@ svg, canvas { display: block; max-width: 100%; }
   overflow: hidden;
   isolation: isolate;
 }
-.hero::after { /* paper grain */
-  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.35; pointer-events: none;
+.hero__stage::after { /* paper grain */
+  content: ""; position: absolute; inset: 0; z-index: 3; opacity: 0.35; pointer-events: none; mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.2 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.hero__orb {
-  position: absolute; z-index: -2;
-  left: 50%; top: 52%;
-  width: min(88vh, 88vw); height: min(88vh, 88vw);
-  transform: translate(-50%, -50%);
+.hero__figure {
+  position: absolute; z-index: -1;
+  left: 50%; bottom: 0;
+  height: 96svh; aspect-ratio: 1500 / 1996;
+  translate: -50% 0;
+  transform-origin: var(--lens-x, 50%) var(--lens-y, 24%);
+  will-change: transform;
 }
-.hero__title { font-size: var(--text-2xl); font-weight: 400; line-height: 1.02; letter-spacing: -0.035em; }
+.hero__pose { position: absolute; inset: 0; width: 100%; height: 100%; }
+.js .hero__pose:not([data-pose="1"]) { opacity: 0; }
+.hero__pose--glow { mix-blend-mode: screen; }
+.hero__flash {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, #ffd60a 0%, #ff8a00 35%, var(--accent) 70%);
+  opacity: 0;
+}
+.hero__title { font-size: clamp(2rem, 1.3rem + 1.6vw, 2.75rem); font-weight: 400; line-height: 1.04; letter-spacing: -0.03em; }
 .hero__aside { display: flex; align-items: center; gap: 1.5rem; }
 .hero__aside .mono-caps { max-width: 230px; color: #4d4d4d; }
 .hero__status {
@@ -311,6 +322,10 @@ svg, canvas { display: block; max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
+  .hero__stage { grid-template-columns: 1fr; align-content: space-between; padding-top: 8rem; }
+  .hero__figure { height: 66svh; }
+  .hero__aside .mono-caps { display: none; }
+  .hero__aside { justify-self: start; }
   .oss { grid-template-columns: 1fr; }
   .focus__row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
   .footer__top { grid-template-columns: 1fr 1fr; }
@@ -323,10 +338,7 @@ svg, canvas { display: block; max-width: 100%; }
   .nav__group:not(.nav__group--end) li:last-child, .nav__group--end li:first-child { display: none; }
   .nav.is-floating .nav__inner { padding: 0.8rem 1rem; }
   .nav.is-floating .nav__group { gap: 1rem; }
-  .hero { grid-template-columns: 1fr; align-content: end; }
-  .hero__orb { top: 40%; width: 110vw; height: 110vw; }
   .hero__aside { flex-direction: column; align-items: stretch; }
-  .hero__aside .mono-caps { max-width: none; }
   .hero__status { top: 5.25rem; left: var(--gutter); right: auto; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .focus__row h3 { color: var(--ink); }
@@ -341,6 +353,10 @@ svg, canvas { display: block; max-width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero { height: auto; }
+  .hero__stage { position: relative; }
+  .js .hero__pose:not([data-pose="3"], [data-glow="3"]) { opacity: 0; }
+  .js .hero__pose[data-pose="3"], .js .hero__pose[data-glow="3"] { opacity: 1; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .js [data-rise] { opacity: 1; transform: none; }
   .js .statement__text .word { opacity: 1; }

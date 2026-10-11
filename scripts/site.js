@@ -6,9 +6,6 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const FLOAT_NAV_OFFSET = 60;
-  const ORB_DOT_ROWS = 22;
-  const ORB_DOT_COLS = 44;
-  const ORB_SPIN_SPEED = 0.00012;
   const WAVE_BARS = 56;
 
   /* ---------- Floating nav ---------- */
@@ -26,80 +23,66 @@
     update();
   }
 
-  /* ---------- Hero orb: dotted globe with a warm glow ---------- */
-  function initOrb() {
-    const canvas = document.querySelector('[data-orb]');
-    const ctx = canvas && canvas.getContext('2d');
-    if (!ctx) return;
+  /* ---------- Hero: turn, ignite, dive into the lenses ---------- */
+  const LENS_X = 0.4997;           // lens centre of pose-3, as a fraction of the frame
+  const LENS_Y = 0.2383;
+  const MAX_ZOOM = 22;
 
-    const points = [];
-    for (let i = 1; i < ORB_DOT_ROWS; i++) {
-      const lat = (i / ORB_DOT_ROWS) * Math.PI - Math.PI / 2;
-      const cols = Math.max(6, Math.round(ORB_DOT_COLS * Math.cos(lat)));
-      for (let j = 0; j < cols; j++) points.push({ lat, lon: (j / cols) * Math.PI * 2 });
-    }
+  const clamp01 = (v) => Math.min(1, Math.max(0, v));
+  const ramp = (p, a, b) => {      // smoothstep between a and b
+    const t = clamp01((p - a) / (b - a));
+    return t * t * (3 - 2 * t);
+  };
 
-    let size = 0;
-    let pointer = { x: 0, y: 0 };
-    let isVisible = true;
+  function initHero() {
+    const hero = document.querySelector('[data-hero]');
+    const figure = hero && hero.querySelector('[data-hero-figure]');
+    if (!figure || prefersReducedMotion) return;
 
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      size = canvas.clientWidth;
-      canvas.width = size * dpr;
-      canvas.height = size * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const layer = (sel) => figure.querySelector(sel);
+    const pose1 = layer('[data-pose="1"]');
+    const pose2 = layer('[data-pose="2"]');
+    const glow2 = layer('[data-glow="2"]');
+    const pose3 = layer('[data-pose="3"]');
+    const glow3 = layer('[data-glow="3"]');
+    const flash = hero.querySelector('[data-hero-flash]');
+    const fades = [...hero.querySelectorAll('[data-hero-fade]')];
+    figure.style.setProperty('--lens-x', `${LENS_X * 100}%`);
+    figure.style.setProperty('--lens-y', `${LENS_Y * 100}%`);
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const rect = hero.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = clamp01(-rect.top / (rect.height - vh));
+
+      const turn1 = ramp(p, 0.1, 0.26);
+      const turn2 = ramp(p, 0.3, 0.44);
+      // Each new pose fades in on top; the one beneath stays solid until it is covered.
+      pose1.style.opacity = turn1 < 1 ? '1' : '0';
+      pose2.style.opacity = turn2 < 1 ? String(turn1) : '0';
+      glow2.style.opacity = String(ramp(p, 0.2, 0.3) * (1 - turn2));
+      pose3.style.opacity = String(turn2);
+      glow3.style.opacity = String(turn2);
+      fades.forEach((el) => { el.style.opacity = String(1 - ramp(p, 0.04, 0.18)); });
+
+      // Dive: keep the lenses fixed while scaling, then drift them to the viewport centre.
+      const dive = ramp(p, 0.46, 0.94);
+      const scale = Math.exp(Math.log(MAX_ZOOM) * dive * dive);
+      const drift = ramp(p, 0.46, 0.72);
+      const w = figure.offsetWidth, h = figure.offsetHeight;
+      const lensX = (window.innerWidth - w) / 2 + LENS_X * w;
+      const lensY = vh - h + LENS_Y * h;
+      const tx = drift * (window.innerWidth / 2 - lensX);
+      const ty = drift * (vh / 2 - lensY);
+      figure.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
+      flash.style.opacity = String(ramp(p, 0.8, 0.97));
     };
-
-    const draw = (t) => {
-      const c = size / 2;
-      const r = size * 0.42;
-      ctx.clearRect(0, 0, size, size);
-
-      const glow = ctx.createRadialGradient(c + pointer.x * 20, c + pointer.y * 20, 0, c, c, r * 1.05);
-      glow.addColorStop(0, 'rgba(255, 214, 10, 0.95)');
-      glow.addColorStop(0.28, 'rgba(255, 140, 0, 0.85)');
-      glow.addColorStop(0.62, 'rgba(244, 60, 0, 0.35)');
-      glow.addColorStop(1, 'rgba(244, 60, 0, 0)');
-      ctx.fillStyle = glow;
-      ctx.beginPath(); ctx.arc(c, c, r * 1.05, 0, Math.PI * 2); ctx.fill();
-
-      const spin = t * ORB_SPIN_SPEED + pointer.x * 0.4;
-      const tilt = -0.35 + pointer.y * 0.2;
-      const cosT = Math.cos(tilt), sinT = Math.sin(tilt);
-
-      for (const p of points) {
-        const lon = p.lon + spin;
-        const x = Math.cos(p.lat) * Math.sin(lon);
-        const y0 = Math.sin(p.lat);
-        const z0 = Math.cos(p.lat) * Math.cos(lon);
-        const y = y0 * cosT - z0 * sinT;
-        const z = y0 * sinT + z0 * cosT;
-        const depth = (z + 1) / 2;
-        ctx.globalAlpha = 0.12 + depth * 0.78;
-        ctx.fillStyle = '#0f0f10';
-        ctx.beginPath();
-        ctx.arc(c + x * r, c + y * r, 0.6 + depth * 2.1, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-    };
-
-    const loop = (t) => {
-      if (isVisible) draw(t);
-      requestAnimationFrame(loop);
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    if (prefersReducedMotion) { draw(0); return; }
-
-    window.addEventListener('pointermove', (e) => {
-      pointer = { x: e.clientX / window.innerWidth - 0.5, y: e.clientY / window.innerHeight - 0.5 };
-    }, { passive: true });
-    new IntersectionObserver(([entry]) => { isVisible = entry.isIntersecting; }).observe(canvas);
-    requestAnimationFrame(loop);
+    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+    update();
   }
 
   /* ---------- Statement word reveal tied to scroll ---------- */
@@ -189,7 +172,7 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   initNav();
-  initOrb();
+  initHero();
   initWordReveal();
   initWave();
   initReveal();
