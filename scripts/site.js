@@ -7,6 +7,7 @@
 
   const FLOAT_NAV_OFFSET = 60;
   const WAVE_BARS = 56;
+  const GAUGE_MAX_YEARS = 20;
 
   /* ---------- Floating nav ---------- */
   function initNav() {
@@ -23,11 +24,11 @@
     update();
   }
 
-  /* ---------- Hero: the surf photo as live, full-width ASCII ---------- */
+  /* ---------- Hero: the surf photo as live ASCII ---------- */
   const RAMP = ' .,:-~=+*#%@';
   const SUBJECT_RAMP = '*#%@';
-  const ASCII_INK = '#14161e';
-  const ASCII_ACCENT = '#f43c00';
+  const ASCII_INK = '#121110';
+  const ASCII_ACCENT = '#f0451e';
   const BG_GAMMA = 1.8;
   const BG_WEIGHT = 0.7;
   const SWELL_AMPLITUDE = 0.08;      // sets of swell rolling in toward the shore
@@ -117,7 +118,7 @@
         }
       }
       grid = { cols, rows, cw, ch, lum, sub, reveal };
-      sizeEl.textContent = `${cols} × ${rows} chars`;
+      if (sizeEl) sizeEl.textContent = `${cols} × ${rows} chars`;
     };
 
     const glyph = (i, t, decode) => {
@@ -175,48 +176,8 @@
     requestAnimationFrame(loop);
   }
 
-  /* ---------- Statement word reveal tied to scroll ---------- */
-  function initWordReveal() {
-    const blocks = [...document.querySelectorAll('[data-reveal-words]')];
-    if (!blocks.length || prefersReducedMotion) return;
-
-    const splitBlocks = blocks.map((el) => {
-      const words = el.textContent.trim().split(/\s+/);
-      el.setAttribute('aria-label', words.join(' '));
-      el.textContent = '';
-      const spans = words.map((w, i) => {
-        const span = document.createElement('span');
-        span.className = 'word';
-        span.setAttribute('aria-hidden', 'true');
-        span.textContent = w;
-        el.appendChild(span);
-        if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
-        return span;
-      });
-      return { el, spans };
-    });
-
-    let ticking = false;
-    const update = () => {
-      const vh = window.innerHeight;
-      for (const { el, spans } of splitBlocks) {
-        const rect = el.getBoundingClientRect();
-        const progress = Math.min(1, Math.max(0, (vh * 0.85 - rect.top) / (vh * 0.55)));
-        const lit = Math.round(progress * spans.length);
-        spans.forEach((s, i) => s.classList.toggle('is-lit', i < lit));
-      }
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
-    update();
-  }
-
   /* ---------- Waveform viz ---------- */
-  function initWave() {
-    const svg = document.querySelector('[data-wave]');
-    if (!svg) return;
+  function buildWave(svg) {
     const ns = 'http://www.w3.org/2000/svg';
     const width = 600, mid = 180, gap = 10, start = (width - WAVE_BARS * gap) / 2;
     for (let i = 0; i < WAVE_BARS; i++) {
@@ -233,9 +194,38 @@
     }
   }
 
+  /* ---------- Years gauge ---------- */
+  function initGauge() {
+    const yearsEl = document.querySelector('[data-years]');
+    const ticks = document.querySelector('[data-gauge-ticks]');
+    const needle = document.querySelector('[data-gauge-needle]');
+    if (!yearsEl || !ticks || !needle) return;
+    const years = new Date().getFullYear() - Number(yearsEl.dataset.since);
+    yearsEl.textContent = String(years);
+    const ns = 'http://www.w3.org/2000/svg';
+    for (let y = 0; y <= GAUGE_MAX_YEARS; y++) {
+      const a = (-90 + (y / GAUGE_MAX_YEARS) * 180) * Math.PI / 180;
+      const isMajor = y % 5 === 0;
+      const r1 = isMajor ? 62 : 66, r2 = 74;
+      const line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', String(100 + r1 * Math.sin(a))); line.setAttribute('y1', String(100 - r1 * Math.cos(a)));
+      line.setAttribute('x2', String(100 + r2 * Math.sin(a))); line.setAttribute('y2', String(100 - r2 * Math.cos(a)));
+      if (isMajor) line.setAttribute('class', 'is-major');
+      ticks.appendChild(line);
+      if (isMajor) {
+        const label = document.createElementNS(ns, 'text');
+        label.setAttribute('x', String(100 + 50 * Math.sin(a))); label.setAttribute('y', String(103 - 50 * Math.cos(a)));
+        label.textContent = String(y);
+        ticks.appendChild(label);
+      }
+    }
+    const angle = -90 + (Math.min(years, GAUGE_MAX_YEARS) / GAUGE_MAX_YEARS) * 180;
+    needle.style.setProperty('--angle', `${angle}deg`);
+  }
+
   /* ---------- Generic reveal on intersect ---------- */
   function initReveal() {
-    const targets = document.querySelectorAll('[data-rise], .case');
+    const targets = document.querySelectorAll('[data-rise]');
     if (!('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('is-in'));
       return;
@@ -248,23 +238,12 @@
     targets.forEach((el) => io.observe(el));
   }
 
-  /* ---------- Focus rows: highlight the row nearest viewport centre ---------- */
-  function initFocusRows() {
-    const rows = [...document.querySelectorAll('.focus__row')];
-    if (!rows.length) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => entry.target.classList.toggle('is-active', entry.isIntersecting));
-    }, { rootMargin: '-45% 0px -45% 0px' });
-    rows.forEach((row) => io.observe(row));
-  }
-
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
 
   initNav();
   initAscii();
-  initWordReveal();
-  initWave();
+  document.querySelectorAll('[data-wave]').forEach(buildWave);
+  initGauge();
   initReveal();
-  initFocusRows();
 })();

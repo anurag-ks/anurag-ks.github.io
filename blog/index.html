@@ -10,37 +10,40 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://anurag-ks.github.io/blog/">
   <link rel="canonical" href="https://anurag-ks.github.io/blog/">
-  <meta name="theme-color" content="#ece4c9">
+  <meta name="theme-color" content="#f0451e">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/site.css">
   <link rel="stylesheet" href="/styles/blog.css">
 </head>
-<body class="blog-page">
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
 
-  <header class="nav" data-nav>
-    <nav class="nav__inner" aria-label="Main navigation">
-      <ul class="nav__group">
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/#focus">Focus</a></li>
-      </ul>
-      <a class="nav__logo" href="/" aria-label="Anurag Sharma, home">anurag<span>.</span></a>
-      <ul class="nav__group nav__group--end">
-        <li><a href="/#open-source">Open source</a></li>
-        <li><a href="/blog/" aria-current="page">Blog</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header class="top" data-nav>
+      <div class="top__brand">
+        <a class="logo" href="/" aria-label="Anurag Sharma, home">a<span>.</span></a>
+        <span class="status"><span class="status__dot" aria-hidden="true"></span>Open to chat</span>
+      </div>
+      <nav class="top__nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#open-source">Open source</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--accent btn--sm" href="mailto:anssharma61@gmail.com"><span aria-hidden="true">✉</span> Say hello</a>
+    </header>
 
   <main id="main">
     <header class="blog-head">
       <div>
-        <p class="eyebrow">Blog</p>
-        <h1 class="blog-head__title">Notes, <span class="muted">now and then.</span></h1>
+        <p class="blog-head__kicker">// Journal</p>
+        <h1 class="blog-head__title">Notes, <span>now and then</span></h1>
       </div>
       <p class="blog-head__lede">Old posts from my student days, with more on backend systems, data and AI to come.</p>
     </header>
@@ -64,20 +67,29 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer__top">
-      <p class="footer__line">Let’s talk about what’s next.</p>
-      <ul class="footer__links">
-        <li><a href="https://github.com/anurag-ks">GitHub</a></li>
-        <li><a href="mailto:anssharma61@gmail.com">Email</a></li>
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/blog/">Blog</a></li>
-      </ul>
-      <address class="footer__where">India<br><span class="mono-caps">IST · UTC+5:30</span></address>
-    </div>
-    <p class="footer__mark" aria-hidden="true">anurag</p>
-    <p class="footer__legal mono-caps">© <span data-year>2026</span> Anurag Sharma</p>
-  </footer>
+    <footer class="foot">
+      <div class="foot__cols">
+        <div>
+          <p class="foot__head">Site</p>
+          <ul><li><a href="/">Home</a></li><li><a href="/#work">Work</a></li><li><a href="/#open-source">Open source</a></li><li><a href="/#contact">Contact</a></li></ul>
+        </div>
+        <div>
+          <p class="foot__head">Writing</p>
+          <ul><li><a href="/blog/">Blog</a></li><li><a href="/blog/gsoc-2018/">GSoC 2018</a></li><li><a href="/blog/new-life/">New Life</a></li></ul>
+        </div>
+        <div>
+          <p class="foot__head">Elsewhere</p>
+          <ul><li><a href="https://github.com/anurag-ks">GitHub</a></li><li><a href="mailto:anssharma61@gmail.com">Email</a></li></ul>
+        </div>
+      </div>
+      <div class="foot__bar">
+        <span>Built by hand, no framework</span>
+        <span>© <span data-year>2026</span> Anurag Sharma</span>
+        <span>Hosted on GitHub Pages</span>
+      </div>
+      <p class="foot__mark" aria-hidden="true">Anurag Sharma</p>
+    </footer>
+  </div>
 
   <script src="/scripts/site.js" defer></script>
 </body>

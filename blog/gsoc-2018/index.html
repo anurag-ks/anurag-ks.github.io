@@ -10,37 +10,40 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://anurag-ks.github.io/blog/gsoc-2018/">
   <link rel="canonical" href="https://anurag-ks.github.io/blog/gsoc-2018/">
-  <meta name="theme-color" content="#ece4c9">
+  <meta name="theme-color" content="#f0451e">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/site.css">
   <link rel="stylesheet" href="/styles/blog.css">
 </head>
-<body class="blog-page">
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
 
-  <header class="nav" data-nav>
-    <nav class="nav__inner" aria-label="Main navigation">
-      <ul class="nav__group">
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/#focus">Focus</a></li>
-      </ul>
-      <a class="nav__logo" href="/" aria-label="Anurag Sharma, home">anurag<span>.</span></a>
-      <ul class="nav__group nav__group--end">
-        <li><a href="/#open-source">Open source</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header class="top" data-nav>
+      <div class="top__brand">
+        <a class="logo" href="/" aria-label="Anurag Sharma, home">a<span>.</span></a>
+        <span class="status"><span class="status__dot" aria-hidden="true"></span>Open to chat</span>
+      </div>
+      <nav class="top__nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#open-source">Open source</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--accent btn--sm" href="mailto:anssharma61@gmail.com"><span aria-hidden="true">✉</span> Say hello</a>
+    </header>
 
   <main id="main">
     <article class="post">
-      <a class="post__back mono-caps" href="/blog/">← All posts</a>
+      <a class="post__back" href="/blog/">← All posts</a>
       <header class="post__header">
-        <p class="post__meta mono-caps"><time datetime="2018-04-30">Apr 30, 2018</time><span>Open source</span><span>2 min read</span></p>
+        <p class="post__meta"><time datetime="2018-04-30">Apr 30, 2018</time><span>Open source</span><span>2 min read</span></p>
         <h1 class="post__title">Google Summer of Code 2018</h1>
       </header>
       <div class="post__body">
@@ -49,27 +52,36 @@
         <p>What makes this even cooler is that I got accepted in my first year. If you’re from Manipal, you’ll know how pathetic the coding culture is here. As far as I know, only two students from here qualified for GSoC 2018. I could go ahead and start ranting about the lacklustre attitude most students here have towards knowledge and creativity, but I’ll leave that for another post.</p>
         <p>As for my GSoC project, I’ll be working with OpenWISP. You can learn more about them on <a href="https://openwisp.org">their website</a>, and you can read more about my project in <a href="/downloads/proposal.pdf">my proposal (PDF)</a>.</p>
         </div>
-      <p class="post__note mono-caps">Written in 2018 · lightly edited for grammar in 2026</p>
+      <p class="post__note">Written in 2018 · lightly edited for grammar in 2026</p>
       <nav class="post__next" aria-label="Next post">
-        <a href="/blog/new-life/"><span class="mono-caps">Next post</span><span>New Life</span></a>
+        <a href="/blog/new-life/"><span class="post__next-label">Next post</span><span>New Life</span></a>
       </nav>
     </article>
   </main>
 
-  <footer class="footer">
-    <div class="footer__top">
-      <p class="footer__line">Let’s talk about what’s next.</p>
-      <ul class="footer__links">
-        <li><a href="https://github.com/anurag-ks">GitHub</a></li>
-        <li><a href="mailto:anssharma61@gmail.com">Email</a></li>
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/blog/">Blog</a></li>
-      </ul>
-      <address class="footer__where">India<br><span class="mono-caps">IST · UTC+5:30</span></address>
-    </div>
-    <p class="footer__mark" aria-hidden="true">anurag</p>
-    <p class="footer__legal mono-caps">© <span data-year>2026</span> Anurag Sharma</p>
-  </footer>
+    <footer class="foot">
+      <div class="foot__cols">
+        <div>
+          <p class="foot__head">Site</p>
+          <ul><li><a href="/">Home</a></li><li><a href="/#work">Work</a></li><li><a href="/#open-source">Open source</a></li><li><a href="/#contact">Contact</a></li></ul>
+        </div>
+        <div>
+          <p class="foot__head">Writing</p>
+          <ul><li><a href="/blog/">Blog</a></li><li><a href="/blog/gsoc-2018/">GSoC 2018</a></li><li><a href="/blog/new-life/">New Life</a></li></ul>
+        </div>
+        <div>
+          <p class="foot__head">Elsewhere</p>
+          <ul><li><a href="https://github.com/anurag-ks">GitHub</a></li><li><a href="mailto:anssharma61@gmail.com">Email</a></li></ul>
+        </div>
+      </div>
+      <div class="foot__bar">
+        <span>Built by hand, no framework</span>
+        <span>© <span data-year>2026</span> Anurag Sharma</span>
+        <span>Hosted on GitHub Pages</span>
+      </div>
+      <p class="foot__mark" aria-hidden="true">Anurag Sharma</p>
+    </footer>
+  </div>
 
   <script src="/scripts/site.js" defer></script>
 </body>
