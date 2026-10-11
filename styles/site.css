@@ -257,23 +257,6 @@ svg, canvas { display: block; max-width: 100%; }
 .js .case:not(.is-in) .viz__line--accent { stroke-dashoffset: 900; }
 .js .case.is-in .viz__line--accent { transition: stroke-dashoffset 1.6s var(--ease-out); }
 
-/* ---------- Recently ---------- */
-.log {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2rem;
-  padding: var(--space-section) var(--gutter);
-}
-.log__lede { margin-top: 1rem; color: var(--muted); font-size: var(--text-sm); max-width: 26ch; }
-.log__list { border-top: 1px solid var(--ink); }
-.log__list li {
-  display: grid; grid-template-columns: 6.5rem 6rem 1fr; gap: 1rem; align-items: baseline;
-  padding: 1rem 0; border-bottom: 1px solid var(--line);
-  transition: background-color var(--dur-fast) ease, padding var(--dur) var(--ease-out);
-}
-.log__list li:hover { background: var(--paper-soft); padding-inline: 0.75rem; }
-.log__list time, .log__scope { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; }
-.log__list time { color: var(--muted); }
-.log__scope { color: var(--accent); }
-
 /* ---------- Open source ---------- */
 .oss {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(3rem, 6vw, 7rem);
@@ -328,7 +311,7 @@ svg, canvas { display: block; max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .log, .oss { grid-template-columns: 1fr; }
+  .oss { grid-template-columns: 1fr; }
   .focus__row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
   .footer__top { grid-template-columns: 1fr 1fr; }
   .footer__line { grid-column: 1 / -1; }
@@ -351,8 +334,6 @@ svg, canvas { display: block; max-width: 100%; }
   .tags { grid-template-columns: 1fr 1fr; gap: 0.35rem 1rem; }
   .work__head { flex-direction: column; }
   .work__intro { text-align: left; }
-  .log__list li { grid-template-columns: 5.5rem 1fr; }
-  .log__list li > span:last-child { grid-column: 1 / -1; }
   .repos a { grid-template-columns: 1fr; gap: 0.35rem; }
   .timeline li { grid-template-columns: 1fr; gap: 0.25rem; }
   .cta__row { flex-direction: column; align-items: flex-start; }

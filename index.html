@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anurag Sharma — Backend Engineer</title>
-  <meta name="description" content="Anurag Sharma is a backend engineer at Carnot Technologies building telematics APIs, data pipelines, applied ML and AI voice agents for machines in the field.">
+  <meta name="description" content="Anurag Sharma is a backend engineer at Carnot Technologies building APIs, data pipelines, applied ML and AI agents.">
   <meta property="og:title" content="Anurag Sharma — Backend Engineer">
   <meta property="og:description" content="APIs, pipelines and models that turn raw telemetry into decisions.">
   <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/site.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Anurag Sharma","jobTitle":"Backend Developer","worksFor":{"@type":"Organization","name":"Carnot Technologies"},"alumniOf":"Manipal Institute of Technology","url":"https://anurag-ks.github.io/","sameAs":["https://github.com/anurag-ks"]}
+  {"@context":"https://schema.org","@type":"Person","name":"Anurag Sharma","jobTitle":"Backend Engineer","worksFor":{"@type":"Organization","name":"Carnot Technologies"},"alumniOf":"Manipal Institute of Technology","url":"https://anurag-ks.github.io/","sameAs":["https://github.com/anurag-ks"]}
   </script>
 </head>
 <body>
@@ -82,19 +82,19 @@
       <ul class="focus__list">
         <li class="focus__row" tabindex="0">
           <h3>Backend &amp; APIs</h3>
-          <ul class="tags"><li>FastAPI · Django</li><li>Auth &amp; RBAC</li><li>Security hardening</li></ul>
+          <ul class="tags"><li>FastAPI · Django</li><li>Auth</li><li>Security</li></ul>
         </li>
         <li class="focus__row" tabindex="0">
-          <h3>Telematics data</h3>
-          <ul class="tags"><li>Event pipelines</li><li>AWS Lambda</li><li>Postgres matviews</li></ul>
+          <h3>Data engineering</h3>
+          <ul class="tags"><li>Pipelines</li><li>Serverless</li><li>Postgres</li></ul>
         </li>
         <li class="focus__row" tabindex="0">
           <h3>Applied ML</h3>
-          <ul class="tags"><li>Predictive models</li><li>Held-out evaluation</li><li>Remote sensing</li></ul>
+          <ul class="tags"><li>Predictive models</li><li>Evaluation</li><li>Remote sensing</li></ul>
         </li>
         <li class="focus__row" tabindex="0">
           <h3>AI agents</h3>
-          <ul class="tags"><li>Voice agents</li><li>LLM evals</li><li>Code review bots</li></ul>
+          <ul class="tags"><li>LLM apps</li><li>Evals</li><li>Code review bots</li></ul>
         </li>
         <li class="focus__row" tabindex="0">
           <h3>Cloud infrastructure</h3>
@@ -110,97 +110,80 @@
     <!-- Selected work -->
     <section class="work" id="work" aria-labelledby="work-heading">
       <header class="work__head">
-        <h2 id="work-heading" class="label">Recent work · 2026</h2>
-        <p class="work__intro">A general view of the kind of work I do at Carnot Technologies.</p>
+        <h2 id="work-heading" class="label">What I build</h2>
+        <p class="work__intro">The kinds of systems I design, ship and look after.</p>
       </header>
 
       <div class="work__grid">
       <article class="case">
         <div class="case__visual" aria-hidden="true">
-          <svg viewBox="0 0 600 360" class="viz viz--thermal">
+          <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" class="viz viz--thermal">
             <g class="viz__grid">
               <line x1="40" y1="60" x2="580" y2="60"/><line x1="40" y1="140" x2="580" y2="140"/>
               <line x1="40" y1="220" x2="580" y2="220"/><line x1="40" y1="300" x2="580" y2="300"/>
             </g>
             <line class="viz__gate" x1="40" y1="110" x2="580" y2="110"/>
-            <text class="viz__note" x="44" y="102">threshold</text>
+            
             <path class="viz__line viz__line--muted" d="M40 290 C110 280 140 210 190 180 S270 120 320 125 S400 170 440 150 S520 90 580 100"/>
             <path class="viz__line viz__line--accent" d="M40 295 C110 285 150 205 190 175 S270 130 320 118 S400 160 440 158 S520 96 580 92"/>
             <circle class="viz__dot" cx="320" cy="118" r="6"/>
           </svg>
         </div>
         <div class="case__body">
-          <p class="mono-caps case__index">01 / 04 · Applied ML</p>
-          <h3 class="case__title">Predictive modelling</h3>
-          <p>Models built from sensor data, evaluated on held-out data.</p>
-          <ul class="tags tags--dark"><li>Python</li><li>Modelling</li><li>Data viz</li></ul>
+          <p class="mono-caps case__index">01 / 04 · Machine learning</p>
+          <h3 class="case__title">Applied ML</h3>
+          <p>Predictive models grounded in real-world data, evaluated honestly.</p>
+          <ul class="tags tags--dark"><li>Python</li><li>Modelling</li><li>Evaluation</li></ul>
         </div>
       </article>
 
       <article class="case">
         <div class="case__visual" aria-hidden="true">
-          <svg viewBox="0 0 600 360" class="viz viz--layers">
+          <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" class="viz viz--layers">
             <rect x="120" y="70"  width="360" height="54" rx="4"/>
             <rect x="120" y="140" width="360" height="54" rx="4"/>
             <rect x="120" y="210" width="360" height="54" rx="4" class="is-accent"/>
-            <text x="140" y="103">transport &amp; headers</text>
-            <text x="140" y="173">identity &amp; sessions</text>
-            <text x="140" y="243">access &amp; audit</text>
+            <text x="140" y="103">interfaces</text>
+            <text x="140" y="173">services</text>
+            <text x="140" y="243">data</text>
           </svg>
         </div>
         <div class="case__body">
           <p class="mono-caps case__index">02 / 04 · Backend</p>
-          <h3 class="case__title">API hardening</h3>
-          <p>Security and reliability work on a production API.</p>
-          <ul class="tags tags--dark"><li>Python</li><li>Security</li><li>APIs</li></ul>
+          <h3 class="case__title">Backend platforms</h3>
+          <p>APIs and services built to be secure, observable and easy to change.</p>
+          <ul class="tags tags--dark"><li>Python</li><li>APIs</li><li>Security</li></ul>
         </div>
       </article>
 
       <article class="case">
         <div class="case__visual" aria-hidden="true">
-          <svg viewBox="0 0 600 360" class="viz viz--wave" data-wave></svg>
+          <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" class="viz viz--wave" data-wave></svg>
         </div>
         <div class="case__body">
-          <p class="mono-caps case__index">03 / 04 · AI agents</p>
-          <h3 class="case__title">AI voice agent</h3>
-          <p>A conversational AI agent with evals, deployed on AWS.</p>
-          <ul class="tags tags--dark"><li>Voice AI</li><li>LLM evals</li><li>AWS · Terraform</li></ul>
+          <p class="mono-caps case__index">03 / 04 · AI</p>
+          <h3 class="case__title">AI agents</h3>
+          <p>LLM-powered agents with the evaluation and tooling to trust them.</p>
+          <ul class="tags tags--dark"><li>LLMs</li><li>Agents</li><li>Evals</li></ul>
         </div>
       </article>
 
       <article class="case">
         <div class="case__visual" aria-hidden="true">
-          <svg viewBox="0 0 600 360" class="viz viz--cycles">
+          <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" class="viz viz--cycles">
             <path class="viz__track" d="M80 280 L160 250 L200 270 L260 200 L300 220 L340 150 L400 170 L450 110 L520 90"/>
             <g class="viz__cycle"><circle cx="180" cy="262" r="26"/><circle cx="320" cy="185" r="30"/><circle cx="470" cy="104" r="24"/></g>
             <g class="viz__pin"><circle cx="180" cy="262" r="5"/><circle cx="320" cy="185" r="5"/><circle cx="470" cy="104" r="5"/></g>
           </svg>
         </div>
         <div class="case__body">
-          <p class="mono-caps case__index">04 / 04 · Telematics</p>
-          <h3 class="case__title">Event processing</h3>
-          <p>Serverless processing that turns event streams into analytics.</p>
-          <ul class="tags tags--dark"><li>AWS Lambda</li><li>Python</li><li>Analytics</li></ul>
+          <p class="mono-caps case__index">04 / 04 · Data</p>
+          <h3 class="case__title">Data engineering</h3>
+          <p>Pipelines that turn raw data into something people can use.</p>
+          <ul class="tags tags--dark"><li>Pipelines</li><li>Cloud</li><li>Analytics</li></ul>
         </div>
       </article>
       </div>
-    </section>
-
-    <!-- Recently -->
-    <section class="log" aria-labelledby="log-heading">
-      <div class="log__head">
-        <h2 id="log-heading" class="label">Recently</h2>
-        <p class="log__lede">What I’ve been working on, in broad strokes.</p>
-      </div>
-      <ol class="log__list">
-        <li><time datetime="2026-10">Oct 2026</time><span class="log__scope">ml</span><span>internal tooling for running and comparing models</span></li>
-        <li><time datetime="2026-10">Oct 2026</time><span class="log__scope">backend</span><span>access control improvements</span></li>
-        <li><time datetime="2026-10">Oct 2026</time><span class="log__scope">ai</span><span>deployment pipeline for an AI service</span></li>
-        <li><time datetime="2026-10">Oct 2026</time><span class="log__scope">data</span><span>new analytics model on event data</span></li>
-        <li><time datetime="2026-09">Sep 2026</time><span class="log__scope">ml</span><span>model evaluation and reporting</span></li>
-        <li><time datetime="2026-09">Sep 2026</time><span class="log__scope">backend</span><span>API security and documentation</span></li>
-        <li><time datetime="2026-09">Sep 2026</time><span class="log__scope">infra</span><span>containerised services with Terraform</span></li>
-      </ol>
     </section>
 
     <!-- Open source -->
