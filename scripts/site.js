@@ -23,18 +23,19 @@
     update();
   }
 
-  /* ---------- Hero: the field photo as live ASCII ---------- */
+  /* ---------- Hero: the surf photo as live, full-width ASCII ---------- */
   const RAMP = ' .,:-~=+*#%@';
   const SUBJECT_RAMP = '*#%@';
   const ASCII_INK = '#14161e';
   const ASCII_ACCENT = '#f43c00';
-  const BG_GAMMA = 1.0;
-  const BG_WEIGHT = 0.75;
-  const SWELL_AMPLITUDE = 0.07;       // a breeze rolling over the terraces
+  const BG_GAMMA = 1.8;
+  const BG_WEIGHT = 0.7;
+  const SWELL_AMPLITUDE = 0.08;      // sets of swell rolling in toward the shore
   const FRAME_MS = 50;              // idle animation runs at ~20fps
   const DECODE_MS = 1600;
   const HOVER_CELLS = 5;
   const RESIZE_DEBOUNCE_MS = 150;
+  const MAX_COLS = 280;
 
   const clamp01 = (v) => Math.min(1, Math.max(0, v));
   const debounce = (fn, ms) => {
@@ -59,7 +60,7 @@
 
   /** Font size that gives roughly the target column count for the canvas width. */
   function asciiFontSize(width) {
-    const targetCols = width < 420 ? 78 : width < 700 ? 112 : 132;
+    const targetCols = width < 420 ? 84 : width < 700 ? 120 : Math.min(MAX_COLS, width / 7);
     return Math.max(7, Math.min(13, width / targetCols / 0.6));
   }
 
@@ -125,7 +126,7 @@
       const dark = 1 - lum[i];
       if (sub[i]) return SUBJECT_RAMP[Math.min(3, Math.floor((0.35 + 0.65 * dark) * 4))];
       const c = i % cols, r = (i / cols) | 0;
-      const swell = prefersReducedMotion ? 0 : Math.sin(c * 0.11 - r * 0.35 + t * 0.0014) * SWELL_AMPLITUDE;
+      const swell = prefersReducedMotion ? 0 : Math.sin(r * 0.42 + c * 0.03 - t * 0.0018) * SWELL_AMPLITUDE;
       const v = clamp01(Math.pow(dark, BG_GAMMA) * BG_WEIGHT + swell * dark);
       return RAMP[Math.min(RAMP.length - 1, Math.floor(v * RAMP.length))];
     };

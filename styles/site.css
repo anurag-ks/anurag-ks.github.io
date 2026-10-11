@@ -130,26 +130,27 @@ svg, canvas { display: block; max-width: 100%; }
   position: relative;
   height: 100svh; min-height: 640px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: clamp(2rem, 5vw, 6rem);
-  padding: 6.5rem var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding: 6.5rem 0 clamp(1rem, 2vw, 1.5rem);
   background: radial-gradient(120% 80% at 30% 0%, rgba(255, 255, 255, 0.4), transparent 60%), var(--cream);
   color: var(--navy);
   overflow: hidden;
 }
-.hero__copy { padding-bottom: 2.25rem; }
-.hero__title { font-size: var(--text-2xl); font-weight: 400; line-height: 1.02; letter-spacing: -0.035em; }
-.hero__lede { max-width: 34ch; margin: 1.75rem 0; color: #4d4d4d; font-size: var(--text-sm); }
-
-.ascii {
-  margin: 0; height: 100%; aspect-ratio: 3 / 4; max-width: 48vw; justify-self: end;
-  display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 0.75rem;
+.hero__copy {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem;
+  padding-inline: var(--gutter);
 }
+.hero__title { max-width: 16ch; font-size: var(--text-2xl); font-weight: 400; line-height: 1.02; letter-spacing: -0.035em; }
+.hero__aside { max-width: 34ch; }
+.hero__lede { margin-bottom: 1.25rem; color: #4d4d4d; font-size: var(--text-sm); }
+
+/* Full-bleed: the art runs edge to edge, only the caption keeps the gutter. */
+.ascii { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 0.75rem; }
 .ascii[hidden] { display: none; }
 .ascii__frame { position: relative; min-height: 0; }
 .ascii__canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; }
-.ascii__caption { display: flex; justify-content: space-between; color: #6f6c62; }
+.ascii__caption { display: flex; justify-content: space-between; padding-inline: var(--gutter); color: #6f6c62; }
 
 /* ---------- Statements ---------- */
 .statement {
@@ -297,11 +298,10 @@ svg, canvas { display: block; max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); align-items: stretch; gap: 1.25rem; padding-top: 5.5rem; }
-  .hero__copy { padding-bottom: 0; }
+  .hero { padding-top: 5.5rem; }
+  .hero__copy { grid-template-columns: 1fr; gap: 1rem; }
   .hero__title { font-size: clamp(2rem, 1.2rem + 4vw, 3rem); }
-  .hero__lede { margin: 0.9rem 0 1rem; }
-  .ascii { height: auto; min-height: 0; max-width: none; width: 100%; aspect-ratio: auto; justify-self: stretch; }
+  .hero__lede { margin-bottom: 1rem; }
   .oss { grid-template-columns: 1fr; }
   .focus__row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
   .footer__top { grid-template-columns: 1fr 1fr; }
