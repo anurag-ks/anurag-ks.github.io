@@ -40,28 +40,32 @@
     <!-- Hero -->
     <section class="hero" id="top" aria-labelledby="hero-heading" data-hero>
       <div class="hero__stage">
-      <div class="hero__figure" data-hero-figure aria-hidden="true">
-        <img class="hero__pose" data-pose="1" src="assets/hero/pose-1.webp" width="1500" height="1996" alt="" fetchpriority="high">
-        <img class="hero__pose" data-pose="2" src="assets/hero/pose-2.webp" width="1500" height="1996" alt="" decoding="async">
-        <img class="hero__pose hero__pose--glow" data-glow="2" src="assets/hero/glow-2.webp" width="1500" height="1996" alt="" decoding="async">
-        <img class="hero__pose" data-pose="3" src="assets/hero/pose-3.webp" width="1500" height="1996" alt="" decoding="async">
-        <img class="hero__pose hero__pose--glow" data-glow="3" src="assets/hero/glow-3.webp" width="1500" height="1996" alt="" decoding="async">
-      </div>
-      <div class="hero__flash" data-hero-flash aria-hidden="true"></div>
-      <div class="hero__copy" data-hero-fade>
-        <p class="eyebrow" data-rise>Anurag Sharma — Backend Engineer</p>
-        <h1 id="hero-heading" class="hero__title">
-          Backend systems<br>for machines<br>
-          <span class="muted">in the field.</span>
-        </h1>
-      </div>
-      <div class="hero__aside" data-hero-fade>
-        <p class="mono-caps">Backend developer at Carnot Technologies. APIs, data pipelines, applied ML and AI agents.</p>
-        <a class="btn btn--accent" href="mailto:anssharma61@gmail.com">Get in touch</a>
-      </div>
-      <p class="hero__status mono-caps" aria-label="Current status" data-hero-fade>
-        <span class="pulse" aria-hidden="true"></span> Currently building at Carnot
-      </p>
+        <div class="hero__copy">
+          <p class="eyebrow">Anurag Sharma — Backend Engineer</p>
+          <h1 id="hero-heading" class="hero__title">
+            Backend systems<br>for machines<br>
+            <span class="muted">in the field.</span>
+          </h1>
+          <p class="hero__lede">Backend developer at Carnot Technologies. APIs, data pipelines, applied ML and AI agents.</p>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="mailto:anssharma61@gmail.com">Get in touch</a>
+            <p class="hero__status mono-caps"><span class="pulse" aria-hidden="true"></span> Currently building at Carnot</p>
+          </div>
+        </div>
+
+        <figure class="field" data-field data-box='{"x":0.3675,"y":0.4344,"w":0.2133,"h":0.5387}'>
+          <div class="field__frame">
+            <img class="field__photo" src="assets/hero/field-photo.webp" width="1200" height="1600"
+                 alt="Anurag standing on a stone path between green rice terraces under a cloudy sky" fetchpriority="high">
+            <canvas class="field__dots" data-field-canvas aria-hidden="true"></canvas>
+            <div class="field__scan" data-field-scan aria-hidden="true"><span class="mono-caps" data-field-pct>Scanning 0%</span></div>
+            <div class="field__box" data-field-box aria-hidden="true"><span class="mono-caps">Person · 0.98</span></div>
+          </div>
+          <figcaption class="field__caption mono-caps">
+            <span>Fig. 01 — Field study</span>
+            <span data-field-count>9,408 points</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 

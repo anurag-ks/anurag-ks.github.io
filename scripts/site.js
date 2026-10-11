@@ -23,65 +23,146 @@
     update();
   }
 
-  /* ---------- Hero: turn, ignite, dive into the lenses ---------- */
-  const LENS_X = 0.4997;           // lens centre of pose-3, as a fraction of the frame
-  const LENS_Y = 0.2383;
-  const MAX_ZOOM = 22;
+  /* ---------- Hero: a machine scans the field ---------- */
+  const MAP_SRC_W = 1200;          // source photo size the data map was sampled from
+  const MAP_SRC_H = 1600;
+  const HOVER_RADIUS = 80;
+  const INK_RGB = '20, 22, 30';
+  const ACCENT_RGB = '244, 60, 0';
+  const CREAM_HEX = '#ece4c9';
 
   const clamp01 = (v) => Math.min(1, Math.max(0, v));
-  const ramp = (p, a, b) => {      // smoothstep between a and b
-    const t = clamp01((p - a) / (b - a));
-    return t * t * (3 - 2 * t);
-  };
+  const ramp = (p, a, b) => clamp01((p - a) / (b - a));
 
-  function initHero() {
+  function loadFieldMap(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = img.naturalWidth; c.height = img.naturalHeight;
+        const ctx = c.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        resolve({ cols: c.width, rows: c.height, data: ctx.getImageData(0, 0, c.width, c.height).data });
+      };
+      img.onerror = () => reject(new Error(`Could not load ${src}`));
+      img.src = src;
+    });
+  }
+
+  async function initField() {
     const hero = document.querySelector('[data-hero]');
-    const figure = hero && hero.querySelector('[data-hero-figure]');
-    if (!figure || prefersReducedMotion) return;
+    const fig = hero && hero.querySelector('[data-field]');
+    const canvas = fig && fig.querySelector('[data-field-canvas]');
+    const ctx = canvas && canvas.getContext('2d');
+    if (!ctx) return;
 
-    const layer = (sel) => figure.querySelector(sel);
-    const pose1 = layer('[data-pose="1"]');
-    const pose2 = layer('[data-pose="2"]');
-    const glow2 = layer('[data-glow="2"]');
-    const pose3 = layer('[data-pose="3"]');
-    const glow3 = layer('[data-glow="3"]');
-    const flash = hero.querySelector('[data-hero-flash]');
-    const fades = [...hero.querySelectorAll('[data-hero-fade]')];
-    figure.style.setProperty('--lens-x', `${LENS_X * 100}%`);
-    figure.style.setProperty('--lens-y', `${LENS_Y * 100}%`);
+    const scanEl = fig.querySelector('[data-field-scan]');
+    const pctEl = fig.querySelector('[data-field-pct]');
+    const boxEl = fig.querySelector('[data-field-box]');
+    const countEl = fig.querySelector('[data-field-count]');
+    const box = JSON.parse(fig.dataset.box);
+
+    let map;
+    try {
+      map = await loadFieldMap('assets/hero/field-map.png');
+    } catch (err) {
+      canvas.remove();              // the plain photo still works without the data layer
+      return;
+    }
+
+    const state = { scan: 0, boxIn: 0, emph: 0 };
+    let geo = null;
+    let pointer = null;
+    let lastKey = '';
+
+    const layout = () => {
+      const fw = canvas.clientWidth, fh = canvas.clientHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(fw * dpr); canvas.height = Math.round(fh * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const scale = Math.max(fw / MAP_SRC_W, fh / MAP_SRC_H);   // matches object-fit: cover
+      const ox = (fw - MAP_SRC_W * scale) / 2, oy = (fh - MAP_SRC_H * scale) / 2;
+      geo = { fw, fh, scale, ox, oy, cell: (MAP_SRC_W / map.cols) * scale };
+      Object.assign(boxEl.style, {
+        left: `${ox + box.x * MAP_SRC_W * scale}px`, top: `${oy + box.y * MAP_SRC_H * scale}px`,
+        width: `${box.w * MAP_SRC_W * scale}px`, height: `${box.h * MAP_SRC_H * scale}px`,
+      });
+      lastKey = '';
+    };
+
+    const draw = () => {
+      const { fw, fh, ox, oy, cell } = geo;
+      const scanY = state.scan * fh;
+      const key = `${scanY.toFixed(1)}|${state.boxIn.toFixed(3)}|${state.emph.toFixed(3)}|${pointer ? pointer.x + ',' + pointer.y : ''}`;
+      if (key === lastKey) return;
+      lastKey = key;
+
+      ctx.clearRect(0, 0, fw, fh);
+      if (scanY > 0) {
+        ctx.fillStyle = CREAM_HEX;
+        ctx.fillRect(0, 0, fw, scanY);
+      }
+      const half = cell / 2;
+      const inkAlpha = 1 - 0.5 * state.emph;
+      let drawn = 0;
+      for (let j = 0; j < map.rows; j++) {
+        const cy = oy + (j + 0.5) * cell;
+        if (cy > scanY || cy < -cell || cy > fh + cell) continue;
+        const grow = clamp01((scanY - cy) / 36);          // dots swell in just behind the scan line
+        for (let i = 0; i < map.cols; i++) {
+          const cx = ox + (i + 0.5) * cell;
+          if (cx < -cell || cx > fw + cell) continue;
+          const k = (j * map.cols + i) * 4;
+          const dark = 1 - map.data[k] / 255;
+          const isPerson = map.data[k + 1] > 115;
+          let r = half * (0.12 + 0.88 * Math.sqrt(dark));
+          if (isPerson) r = Math.max(r, half * 0.55);
+          if (pointer) {
+            const d = Math.hypot(cx - pointer.x, cy - pointer.y);
+            if (d < HOVER_RADIUS) r *= 1 + 0.6 * (1 - d / HOVER_RADIUS);
+          }
+          r = Math.min(r * grow, half * 1.05);
+          if (r < 0.3) continue;
+          ctx.fillStyle = isPerson ? `rgb(${ACCENT_RGB})` : `rgba(${INK_RGB}, ${inkAlpha})`;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+          drawn++;
+        }
+      }
+
+      const scanning = state.scan > 0 && state.scan < 1;
+      scanEl.style.opacity = scanning ? '1' : '0';
+      scanEl.style.setProperty('--scan-y', `${scanY}px`);
+      pctEl.textContent = `Scanning ${Math.round(state.scan * 100)}%`;
+      boxEl.style.opacity = String(state.boxIn);
+      boxEl.style.transform = `scale(${1.08 - 0.08 * state.boxIn})`;
+      countEl.textContent = `${drawn.toLocaleString('en-US')} points`;
+    };
 
     let ticking = false;
     const update = () => {
       ticking = false;
-      const rect = hero.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const p = clamp01(-rect.top / (rect.height - vh));
-
-      const turn1 = ramp(p, 0.1, 0.26);
-      const turn2 = ramp(p, 0.3, 0.44);
-      // Each new pose fades in on top; the one beneath stays solid until it is covered.
-      pose1.style.opacity = turn1 < 1 ? '1' : '0';
-      pose2.style.opacity = turn2 < 1 ? String(turn1) : '0';
-      glow2.style.opacity = String(ramp(p, 0.2, 0.3) * (1 - turn2));
-      pose3.style.opacity = String(turn2);
-      glow3.style.opacity = String(turn2);
-      fades.forEach((el) => { el.style.opacity = String(1 - ramp(p, 0.04, 0.18)); });
-
-      // Dive: keep the lenses fixed while scaling, then drift them to the viewport centre.
-      const dive = ramp(p, 0.46, 0.94);
-      const scale = Math.exp(Math.log(MAX_ZOOM) * dive * dive);
-      const drift = ramp(p, 0.46, 0.72);
-      const w = figure.offsetWidth, h = figure.offsetHeight;
-      const lensX = (window.innerWidth - w) / 2 + LENS_X * w;
-      const lensY = vh - h + LENS_Y * h;
-      const tx = drift * (window.innerWidth / 2 - lensX);
-      const ty = drift * (vh / 2 - lensY);
-      figure.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
-      flash.style.opacity = String(ramp(p, 0.8, 0.97));
+      if (prefersReducedMotion) {
+        Object.assign(state, { scan: 1, boxIn: 1, emph: 1 });
+      } else {
+        const rect = hero.getBoundingClientRect();
+        const p = clamp01(-rect.top / (rect.height - window.innerHeight));
+        state.scan = ramp(p, 0.03, 0.62);
+        state.boxIn = ramp(p, 0.62, 0.74);
+        state.emph = ramp(p, 0.64, 0.82);
+      }
+      draw();
     };
     const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+
+    canvas.addEventListener('pointermove', (e) => {
+      const r = canvas.getBoundingClientRect();
+      pointer = { x: Math.round(e.clientX - r.left), y: Math.round(e.clientY - r.top) };
+      request();
+    });
+    canvas.addEventListener('pointerleave', () => { pointer = null; request(); });
     window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', request);
+    window.addEventListener('resize', () => { layout(); request(); });
+    layout();
     update();
   }
 
@@ -172,7 +253,7 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   initNav();
-  initHero();
+  initField();
   initWordReveal();
   initWave();
   initReveal();
