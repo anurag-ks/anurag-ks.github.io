@@ -34,8 +34,13 @@
   const FRAME_MS = 50;              // idle animation runs at ~20fps
   const DECODE_MS = 1600;
   const HOVER_CELLS = 5;
+  const RESIZE_DEBOUNCE_MS = 150;
 
   const clamp01 = (v) => Math.min(1, Math.max(0, v));
+  const debounce = (fn, ms) => {
+    let timer;
+    return () => { clearTimeout(timer); timer = setTimeout(fn, ms); };
+  };
 
   function loadAsciiMap(src) {
     return new Promise((resolve, reject) => {
@@ -155,7 +160,7 @@
     build();
     if (prefersReducedMotion) {
       draw(performance.now());
-      window.addEventListener('resize', () => { build(); draw(performance.now()); });
+      window.addEventListener('resize', debounce(() => { build(); draw(performance.now()); }, RESIZE_DEBOUNCE_MS));
       return;
     }
     canvas.addEventListener('pointermove', (e) => {
@@ -163,7 +168,7 @@
       pointer = { x: e.clientX - r.left, y: e.clientY - r.top };
     });
     canvas.addEventListener('pointerleave', () => { pointer = null; });
-    window.addEventListener('resize', () => { build(); start = performance.now() - DECODE_MS; });
+    window.addEventListener('resize', debounce(() => { build(); start = performance.now() - DECODE_MS; }, RESIZE_DEBOUNCE_MS));
     new IntersectionObserver(([entry]) => { isVisible = entry.isIntersecting; }).observe(canvas);
     start = performance.now();
     requestAnimationFrame(loop);
